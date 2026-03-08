@@ -1,0 +1,144 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Terms of Service"
+  description="Terms and conditions under which football assessments and consultancy services are provided."
+>
+  <section class="page-header">
+    <div class="container">
+      <h1>Terms of Service</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="legal">
+        <p class="legal__intro">
+          These Terms of Service outline the conditions under which football
+          assessments and consultancy services are provided.
+        </p>
+
+        <h2>1. Services Provided</h2>
+        <p>
+          I provide independent football assessments, reports, consultations and
+          development guidance based on match video or in-person observation.
+        </p>
+
+        <h2>2. Client Responsibility</h2>
+        <p>Clients must ensure:</p>
+        <ul>
+          <li>Match footage is clear and usable</li>
+          <li>Information provided is accurate</li>
+          <li>Any requested materials are supplied on time</li>
+        </ul>
+
+        <h2>3. Payment</h2>
+        <p>
+          Payments must be made in full before assessments or consultations are
+          delivered. Prices may vary by region. Refunds are not available once
+          analysis has begun.
+        </p>
+
+        <h2>4. Delivery of Reports</h2>
+        <p>
+          Reports are delivered digitally. Delivery times may vary depending on
+          video quality, availability and workload.
+        </p>
+
+        <h2>5. Use of Reports</h2>
+        <p>
+          Reports are for personal or internal use only and must not be
+          distributed, published or used commercially without permission.
+        </p>
+
+        <h2>6. Limitation of Advice</h2>
+        <p>
+          All assessments represent professional opinion based on available
+          information. No outcomes, selections or offers from third-party
+          organisations are guaranteed.
+        </p>
+
+        <h2>7. Data Protection</h2>
+        <p>
+          Any personal data provided is handled in accordance with the
+          <a href="/privacy-policy/">Privacy Policy</a>.
+        </p>
+
+        <h2>8. Contact Information</h2>
+        <p>
+          If you have questions about these terms, please contact:
+          <a href="mailto:michaelmulhernfc1@outlook.com">michaelmulhernfc1@outlook.com</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding: 4rem 1.5rem 2rem;
+    background-color: var(--color-off-white);
+  }
+
+  .legal {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .legal__intro {
+    font-size: 1.0625rem;
+    color: var(--color-grey-600);
+    margin-bottom: 2.5rem;
+  }
+
+  .legal h2 {
+    font-size: 1.25rem;
+    margin: 2rem 0 0.75rem;
+  }
+
+  .legal h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .legal p {
+    color: var(--color-grey-600);
+    font-size: 0.9375rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal a {
+    color: var(--color-gold);
+    font-weight: 600;
+    transition: color 0.15s ease;
+  }
+
+  .legal a:hover {
+    color: var(--color-gold-hover);
+  }
+
+  .legal ul {
+    list-style: none;
+    margin: 0.5rem 0 1rem;
+  }
+
+  .legal li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.375rem;
+    color: var(--color-grey-600);
+    font-size: 0.9375rem;
+  }
+
+  .legal li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-gold);
+  }
+</style>

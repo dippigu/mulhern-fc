@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Privacy Policy"
+  description="How we collect, use and protect your personal information when you use this website or contact us for football assessment services."
+>
+  <section class="page-header">
+    <div class="container">
+      <h1>Privacy Policy</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="legal">
+        <p class="legal__intro">
+          This Privacy Policy explains how we collect, use and protect your
+          personal information when you use this website or contact me for
+          football assessment services.
+        </p>
+
+        <h2>1. Information I Collect</h2>
+        <p>I may collect:</p>
+        <ul>
+          <li>Your name</li>
+          <li>Email address</li>
+          <li>Any information you provide through the contact form</li>
+          <li>Video links or files you choose to send for assessment</li>
+          <li>Basic website usage data (via standard analytics tools)</li>
+        </ul>
+
+        <h2>2. How Your Information Is Used</h2>
+        <p>Your information is used to:</p>
+        <ul>
+          <li>Respond to your enquiries</li>
+          <li>Provide assessments and consultancy services</li>
+          <li>Arrange bookings, calls or follow-up communication</li>
+          <li>Improve the website and services</li>
+        </ul>
+        <p>I do not sell or share your personal information with third parties.</p>
+
+        <h2>3. How Your Information Is Stored</h2>
+        <p>
+          Your data is stored securely and is only accessible for as long as
+          needed to provide the services you requested.
+        </p>
+
+        <h2>4. Contact Form Submissions</h2>
+        <p>When you send a message using the contact form:</p>
+        <ul>
+          <li>Your details are emailed directly to me</li>
+          <li>A copy may be stored in the platform's secure system</li>
+        </ul>
+
+        <h2>5. Cookies</h2>
+        <p>
+          This website may use cookies for basic functionality and performance
+          tracking. You can disable cookies in your browser settings at any time.
+        </p>
+
+        <h2>6. Your Rights</h2>
+        <p>You may:</p>
+        <ul>
+          <li>Request a copy of your information</li>
+          <li>Ask for your information to be corrected or deleted</li>
+          <li>Withdraw consent at any time</li>
+        </ul>
+
+        <h2>7. Updates to This Policy</h2>
+        <p>
+          This Privacy Policy may be updated occasionally. Any changes will be
+          posted on this page.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding: 4rem 1.5rem 2rem;
+    background-color: var(--color-off-white);
+  }
+
+  .legal {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .legal__intro {
+    font-size: 1.0625rem;
+    color: var(--color-grey-600);
+    margin-bottom: 2.5rem;
+  }
+
+  .legal h2 {
+    font-size: 1.25rem;
+    margin: 2rem 0 0.75rem;
+  }
+
+  .legal h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .legal p {
+    color: var(--color-grey-600);
+    font-size: 0.9375rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal ul {
+    list-style: none;
+    margin: 0.5rem 0 1rem;
+  }
+
+  .legal li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.375rem;
+    color: var(--color-grey-600);
+    font-size: 0.9375rem;
+  }
+
+  .legal li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-gold);
+  }
+</style>

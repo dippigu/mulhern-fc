@@ -6,6 +6,8 @@ const navItems = [
   { label: 'About', href: '/about/' },
   { label: 'Players & Families', href: '/services/players/' },
   { label: 'Clubs & Institutions', href: '/services/institutions/' },
+  { label: 'Partnerships', href: '/partnerships/academies/' },
+  { label: 'FAQs', href: '/faqs/' },
   { label: 'Contact', href: '/contact/' },
 ];
 ---
@@ -28,7 +30,7 @@ const navItems = [
           <li>
             <a
               href={href}
-              class:list={['header__link', { 'header__link--active': currentPath === href }]}
+              class:list={['header__link', { 'header__link--active': currentPath === href || (href !== '/' && currentPath.startsWith(href.replace(/\/$/, ''))) }]}
             >
               {label}
             </a>
