@@ -1,0 +1,114 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer__inner container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <span class="footer__logo">MMulFC</span>
+        <p class="footer__tagline">Elite football assessment and development consultancy.</p>
+      </div>
+
+      <div class="footer__links">
+        <div class="footer__col">
+          <h4 class="footer__heading">Services</h4>
+          <ul>
+            <li><a href="/services/players/">Players & Families</a></li>
+            <li><a href="/services/institutions/">Clubs & Institutions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__heading">Company</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; {currentYear} Michael Mulhern Football Consultancy Ltd. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-navy);
+    color: var(--color-grey-400);
+    padding: 3.5rem 0 0;
+  }
+
+  .footer__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--color-navy-light);
+  }
+
+  .footer__brand {
+    max-width: 280px;
+  }
+
+  .footer__logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-white);
+    letter-spacing: -0.02em;
+  }
+
+  .footer__tagline {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .footer__links {
+    display: flex;
+    gap: 4rem;
+  }
+
+  .footer__heading {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-white);
+    margin-bottom: 1rem;
+  }
+
+  .footer__col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer__col a {
+    font-size: 0.875rem;
+    transition: color 0.15s ease;
+  }
+
+  .footer__col a:hover {
+    color: var(--color-white);
+  }
+
+  .footer__bottom {
+    padding: 1.5rem 0;
+    font-size: 0.8125rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer__top {
+      flex-direction: column;
+    }
+
+    .footer__links {
+      gap: 2.5rem;
+    }
+  }
+</style>

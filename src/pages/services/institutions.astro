@@ -1,0 +1,188 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Services for Clubs & Institutions"
+  description="Independent, elite-standard evaluation and development support for clubs, academies, universities and international football programmes."
+>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <span class="badge">Institutional Services</span>
+      <h1>Clubs, Academies & Universities</h1>
+      <p class="page-header__subtitle">
+        Independent, elite-standard evaluation and development support for
+        clubs, academies, universities and international football programmes.
+        Every service is grounded in professional experience across international
+        women's football, the WSL and the men's professional game.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section">
+    <div class="container">
+      <div class="services-grid">
+        <div class="service-card">
+          <h2>Applicant Evaluation</h2>
+          <p>
+            A professional, objective review of football applicants through full
+            match video analysis, written reporting, development priorities and
+            suitability insight for your programme.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h2>Long-List Creation</h2>
+          <p>
+            A structured, tailored list of players based on your programme's
+            level, positional requirements, academic expectations and pathway
+            structure.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h2>Short-List Creation</h2>
+          <p>
+            A refined list of high-priority candidates with suitability rankings,
+            performance notes, projected development and behavioural observations.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h2>Recruitment Cycle Support</h2>
+          <p>
+            Comprehensive support across your annual recruitment cycle, including
+            evaluation, communication with staff, short-listing, suitability
+            analysis and pathway recommendations.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h2>Workshops</h2>
+          <p>
+            Online or in-person workshops for staff or players covering player
+            development, tactical understanding, talent identification and
+            high-performance behaviours.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h2>Coach Mentorship</h2>
+          <p>
+            One-to-one or small group mentorship for coaches focusing on player
+            assessment, talent identification, session design and communication
+            with players and parents.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h2>Institutional Retainers</h2>
+          <p>
+            Long-term support packages offering priority access to evaluations,
+            monthly consultations, player tracking and structured, ongoing
+            development support.
+          </p>
+        </div>
+
+        <div class="service-card service-card--bespoke">
+          <h2>Bespoke Packages</h2>
+          <p>
+            Every institution is unique. Bespoke pricing is available for
+            universities, colleges, academies and schools, based on your needs.
+          </p>
+          <a href="/contact/" class="btn btn--primary">Discuss Your Needs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__header">
+        <h2>Let's discuss how I can support your programme</h2>
+        <p>Get in touch to explore the right service for your institution.</p>
+      </div>
+      <div class="cta__action">
+        <a href="/contact/" class="btn btn--primary">Contact Michael</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding: 4rem 1.5rem 2rem;
+    background-color: var(--color-off-white);
+  }
+
+  .page-header .badge {
+    margin-bottom: 1rem;
+  }
+
+  .page-header__subtitle {
+    margin-top: 1.25rem;
+    font-size: 1.0625rem;
+    color: var(--color-grey-600);
+    max-width: 55ch;
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    padding: 2.25rem;
+    border: 1px solid var(--color-grey-200);
+    border-radius: 6px;
+    transition: border-color 0.2s ease;
+  }
+
+  .service-card:hover {
+    border-color: var(--color-green);
+  }
+
+  .service-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-card p {
+    color: var(--color-grey-600);
+    font-size: 0.9375rem;
+  }
+
+  /* Bespoke card */
+  .service-card--bespoke {
+    border: 2px solid var(--color-green);
+    background: linear-gradient(to bottom, rgba(27, 77, 46, 0.03), transparent);
+    grid-column: 1 / -1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-card--bespoke .btn {
+    margin-top: 1.5rem;
+  }
+
+  .cta__action {
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-card {
+      padding: 1.75rem;
+    }
+  }
+</style>

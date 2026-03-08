@@ -1,0 +1,255 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="About"
+  description="UEFA A Licence coach with 20+ years across elite women's international football, the WSL and the professional men's game in the United Kingdom."
+>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <span class="badge">About Michael</span>
+      <h1>Two decades at the highest level</h1>
+    </div>
+  </section>
+
+  <!-- Bio -->
+  <section class="section">
+    <div class="container">
+      <div class="bio-layout">
+        <div class="bio-image-placeholder">
+          <span>Photo</span>
+        </div>
+        <div class="bio-content">
+          <p class="bio-lead">
+            I am a UEFA A Licence Football coach with more than two decades of
+            experience across elite women's international football, the Women's
+            Super League (WSL), and the professional men's game in the United
+            Kingdom.
+          </p>
+          <p>
+            My career includes coaching the England Women's U-23s, and head
+            coach at both Sunderland and Middlesbrough Women.
+          </p>
+          <p>
+            I was a scout for the England Women's Senior Team and the girls and
+            women's pathway from U-17 to U-23. I also worked at Newcastle United
+            and for the English Football Association as a coach mentor.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__header">
+        <h2>Experience</h2>
+        <p>
+          Roles in some of the most respected football environments in the UK
+          and internationally.
+        </p>
+      </div>
+
+      <div class="experience-grid">
+        <div class="exp-item">
+          <div class="exp-item__marker"></div>
+          <span>Elite women's international coaching</span>
+        </div>
+        <div class="exp-item">
+          <div class="exp-item__marker"></div>
+          <span>Women's Super League</span>
+        </div>
+        <div class="exp-item">
+          <div class="exp-item__marker"></div>
+          <span>Professional men's football environments</span>
+        </div>
+        <div class="exp-item">
+          <div class="exp-item__marker"></div>
+          <span>England Senior Women's Team</span>
+        </div>
+        <div class="exp-item">
+          <div class="exp-item__marker"></div>
+          <span>England Girls' Pathway (U17-U23)</span>
+        </div>
+        <div class="exp-item">
+          <div class="exp-item__marker"></div>
+          <span>Newcastle United Academy (Boys)</span>
+        </div>
+        <div class="exp-item">
+          <div class="exp-item__marker"></div>
+          <span>Newcastle United Foundation U-17 Men</span>
+        </div>
+        <div class="exp-item">
+          <div class="exp-item__marker"></div>
+          <span>The FA Coach Mentor Programme</span>
+        </div>
+        <div class="exp-item">
+          <div class="exp-item__marker"></div>
+          <span>International consultancy across UK, USA, China, Australia and Middle East</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="section">
+    <div class="container">
+      <div class="philosophy">
+        <h2>My Philosophy</h2>
+        <blockquote>
+          <p>
+            My work is built on honesty, objectivity and development. I provide
+            assessments grounded in elite standards, shaped by real performance
+            benchmarks and long-term growth. I do not produce 'happy sheets'.
+            Every report reflects exactly what a player needs to progress.
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__header">
+        <h2>Work with Michael</h2>
+        <p>Whether you're a player, parent, club or university — get in touch to discuss how I can help.</p>
+      </div>
+      <div class="cta__action">
+        <a href="/contact/" class="btn btn--primary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding: 4rem 1.5rem 2rem;
+    background-color: var(--color-off-white);
+  }
+
+  .page-header .badge {
+    margin-bottom: 1rem;
+  }
+
+  .page-header h1 {
+    max-width: 20ch;
+  }
+
+  /* Bio Layout */
+  .bio-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .bio-image-placeholder {
+    aspect-ratio: 3 / 4;
+    background-color: var(--color-grey-100);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-grey-400);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 2px dashed var(--color-grey-200);
+  }
+
+  .bio-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .bio-lead {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--color-navy);
+    line-height: 1.7;
+  }
+
+  .bio-content p {
+    color: var(--color-grey-600);
+  }
+
+  /* Experience Grid */
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .exp-item {
+    display: flex;
+    align-items: start;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background-color: var(--color-white);
+    border-radius: 6px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-navy);
+  }
+
+  .exp-item__marker {
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-green);
+    margin-top: 0.45rem;
+  }
+
+  /* Philosophy */
+  .philosophy {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .philosophy h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  blockquote {
+    position: relative;
+    padding: 2rem;
+    background-color: var(--color-off-white);
+    border-left: 4px solid var(--color-gold);
+    border-radius: 0 6px 6px 0;
+    text-align: left;
+  }
+
+  blockquote p {
+    font-size: 1.0625rem;
+    color: var(--color-grey-600);
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  .cta__action {
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .bio-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .bio-image-placeholder {
+      max-width: 250px;
+      margin: 0 auto;
+    }
+
+    .experience-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

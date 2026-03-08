@@ -1,0 +1,214 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact"
+  description="Get in touch with Michael Mulhern to discuss player assessments, club consultancy or any other football development needs."
+>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <span class="badge">Get in Touch</span>
+      <h1>Contact Michael</h1>
+      <p class="page-header__subtitle">
+        Whether you're a player, parent, club or university — get in touch to
+        discuss how I can help.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+        <form
+          class="contact-form"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden" aria-hidden="true">
+            <label>
+              Don't fill this out if you're human: <input name="bot-field" />
+            </label>
+          </p>
+
+          <div class="form-group">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" required autocomplete="name" />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+
+          <div class="form-group">
+            <label for="enquiry-type">I'm enquiring about</label>
+            <select id="enquiry-type" name="enquiry-type" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="player-assessment">Player assessment (individual)</option>
+              <option value="club-services">Club, academy or university services</option>
+              <option value="coaching-mentorship">Coaching mentorship</option>
+              <option value="workshop">Workshop</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary">Send Message</button>
+        </form>
+
+        <aside class="contact-info">
+          <div class="info-card">
+            <h3>Email</h3>
+            <a href="mailto:michaelmulhernfc1@outlook.com">michaelmulhernfc1@outlook.com</a>
+          </div>
+
+          <div class="info-card">
+            <h3>Based in</h3>
+            <p>United Kingdom</p>
+          </div>
+
+          <div class="info-card">
+            <h3>Working globally</h3>
+            <p>UK, USA, China, Australia, Middle East</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding: 4rem 1.5rem 2rem;
+    background-color: var(--color-off-white);
+  }
+
+  .page-header .badge {
+    margin-bottom: 1rem;
+  }
+
+  .page-header__subtitle {
+    margin-top: 1.25rem;
+    font-size: 1.0625rem;
+    color: var(--color-grey-600);
+    max-width: 50ch;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  /* Contact Layout */
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Form */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    font-family: inherit;
+    border: 1px solid var(--color-grey-200);
+    border-radius: 4px;
+    background-color: var(--color-white);
+    color: var(--color-grey-800);
+    transition: border-color 0.15s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+  }
+
+  .form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234b5563' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+
+  /* Sidebar */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .info-card {
+    padding: 1.5rem;
+    background-color: var(--color-off-white);
+    border-radius: 6px;
+  }
+
+  .info-card h3 {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-grey-400);
+    margin-bottom: 0.5rem;
+  }
+
+  .info-card a {
+    color: var(--color-navy);
+    font-weight: 500;
+    transition: color 0.15s ease;
+  }
+
+  .info-card a:hover {
+    color: var(--color-gold);
+  }
+
+  .info-card p {
+    color: var(--color-navy);
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .contact-layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>
