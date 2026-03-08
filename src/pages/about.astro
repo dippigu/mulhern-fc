@@ -18,8 +18,13 @@ import Layout from '../layouts/Layout.astro';
   <section class="section">
     <div class="container">
       <div class="bio-layout">
-        <div class="bio-image-placeholder">
-          <span>Photo</span>
+        <div class="bio-image">
+          <img
+            src="/mulhern-logo.jpeg"
+            alt="Michael Mulhern Football Consultancy"
+            width="300"
+            height="300"
+          />
         </div>
         <div class="bio-content">
           <p class="bio-lead">
@@ -142,22 +147,22 @@ import Layout from '../layouts/Layout.astro';
   /* Bio Layout */
   .bio-layout {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 280px 1fr;
     gap: 3rem;
     align-items: start;
   }
 
-  .bio-image-placeholder {
-    aspect-ratio: 3 / 4;
-    background-color: var(--color-grey-100);
-    border-radius: 6px;
+  .bio-image {
     display: flex;
-    align-items: center;
     justify-content: center;
-    color: var(--color-grey-400);
-    font-size: 0.875rem;
-    font-weight: 500;
-    border: 2px dashed var(--color-grey-200);
+  }
+
+  .bio-image img {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   }
 
   .bio-content {
@@ -203,7 +208,7 @@ import Layout from '../layouts/Layout.astro';
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: var(--color-green);
+    background-color: var(--color-gold);
     margin-top: 0.45rem;
   }
 
@@ -218,11 +223,20 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: 1.5rem;
   }
 
+  .philosophy h2::after {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 2px;
+    background-color: var(--color-gold);
+    margin: 1rem auto 0;
+  }
+
   blockquote {
     position: relative;
     padding: 2rem;
     background-color: var(--color-off-white);
-    border-left: 4px solid var(--color-gold);
+    border-left: 3px solid var(--color-gold);
     border-radius: 0 6px 6px 0;
     text-align: left;
   }
@@ -243,8 +257,9 @@ import Layout from '../layouts/Layout.astro';
       grid-template-columns: 1fr;
     }
 
-    .bio-image-placeholder {
-      max-width: 250px;
+    .bio-image img {
+      width: 200px;
+      height: 200px;
       margin: 0 auto;
     }
 

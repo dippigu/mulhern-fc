@@ -6,7 +6,13 @@ const currentYear = new Date().getFullYear();
   <div class="footer__inner container">
     <div class="footer__top">
       <div class="footer__brand">
-        <span class="footer__logo">MMulFC</span>
+        <img
+          src="/mulhern-logo.jpeg"
+          alt="Michael Mulhern Football Consultancy"
+          class="footer__logo-img"
+          width="56"
+          height="56"
+        />
         <p class="footer__tagline">Elite football assessment and development consultancy.</p>
       </div>
 
@@ -16,15 +22,18 @@ const currentYear = new Date().getFullYear();
           <ul>
             <li><a href="/services/players/">Players & Families</a></li>
             <li><a href="/services/institutions/">Clubs & Institutions</a></li>
+            <li><a href="/bookings/">Book a Call</a></li>
           </ul>
         </div>
 
         <div class="footer__col">
-          <h4 class="footer__heading">Partnerships</h4>
+          <h4 class="footer__heading">Regions</h4>
           <ul>
-            <li><a href="/partnerships/academies/">Academies</a></li>
-            <li><a href="/partnerships/schools/">Schools</a></li>
-            <li><a href="/partnerships/agencies/">Agencies</a></li>
+            <li><a href="/regions/uk/">United Kingdom</a></li>
+            <li><a href="/regions/usa/">USA</a></li>
+            <li><a href="/regions/china/">China</a></li>
+            <li><a href="/regions/australia/">Australia</a></li>
+            <li><a href="/regions/middle-east/">Middle East</a></li>
           </ul>
         </div>
 
@@ -32,6 +41,7 @@ const currentYear = new Date().getFullYear();
           <h4 class="footer__heading">Company</h4>
           <ul>
             <li><a href="/about/">About</a></li>
+            <li><a href="/partnerships/academies/">Partnerships</a></li>
             <li><a href="/faqs/">FAQs</a></li>
             <li><a href="/contact/">Contact</a></li>
           </ul>
@@ -74,15 +84,15 @@ const currentYear = new Date().getFullYear();
     max-width: 280px;
   }
 
-  .footer__logo {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--color-white);
-    letter-spacing: -0.02em;
+  .footer__logo-img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
   .footer__tagline {
-    margin-top: 0.75rem;
+    margin-top: 1rem;
     font-size: 0.875rem;
     line-height: 1.6;
   }
@@ -114,7 +124,7 @@ const currentYear = new Date().getFullYear();
   }
 
   .footer__col a:hover {
-    color: var(--color-white);
+    color: var(--color-gold);
   }
 
   .footer__bottom {
@@ -128,6 +138,8 @@ const currentYear = new Date().getFullYear();
     }
 
     .footer__links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 2.5rem;
     }
   }

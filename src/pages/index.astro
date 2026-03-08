@@ -16,7 +16,7 @@ import Layout from '../layouts/Layout.astro';
         players, families, clubs, academies and universities worldwide.
       </p>
       <div class="hero__actions">
-        <a href="/contact/" class="btn btn--primary">Get in Touch</a>
+        <a href="/bookings/" class="btn btn--primary">Book a Call</a>
         <a href="/about/" class="btn btn--outline">About Michael</a>
       </div>
     </div>
@@ -41,35 +41,36 @@ import Layout from '../layouts/Layout.astro';
       <div class="section__header">
         <h2>Who I Work With</h2>
         <p>
-          Supporting players and institutions at every level, from early
-          development through to elite pathways.
+          Players, families, clubs and universities who want honest, objective
+          and development-focused insight. Every assessment is delivered with
+          professional standards shaped by elite environments.
         </p>
       </div>
 
       <div class="audience-grid">
         <div class="audience-card">
-          <h3>Players aged 7-13</h3>
-          <p>Early development assessment and academy readiness guidance for younger players and their families.</p>
+          <h3>Younger Players (7-13)</h3>
+          <p>For families seeking early, honest clarity on whether a child is showing signs of academy-level potential. Feedback is supportive, realistic and designed to give parents clear next steps.</p>
         </div>
         <div class="audience-card">
           <h3>Players aged 14-18</h3>
-          <p>Honest, development-focused assessment with pathway guidance for youth players.</p>
+          <p>Independent, development-focused assessments for teenage players preparing for academy environments, trials, transitions or university applications.</p>
         </div>
         <div class="audience-card">
           <h3>Players aged 18+</h3>
-          <p>Support for trials, transitions, university applications and international pathway decisions.</p>
+          <p>Objective support for older youth players progressing towards senior football, university recruitment or structured development planning.</p>
+        </div>
+        <div class="audience-card">
+          <h3>Parents & Families</h3>
+          <p>Clear, unbiased insight to help parents make informed decisions about their child's football journey, development needs and realistic pathway options.</p>
         </div>
         <div class="audience-card">
           <h3>Clubs & Academies</h3>
-          <p>Independent evaluation, recruitment support and long-term development consultancy.</p>
+          <p>Independent evaluation, written reports, recruitment support, long-list and short-list creation to strengthen talent identification and internal pathways.</p>
         </div>
         <div class="audience-card">
-          <h3>Universities</h3>
-          <p>Applicant evaluation, recruitment cycle support and programme development.</p>
-        </div>
-        <div class="audience-card">
-          <h3>Agencies</h3>
-          <p>Independent assessments and development reviews for represented players.</p>
+          <h3>Universities & Agencies</h3>
+          <p>Applicant evaluation, suitability checks, recruitment support and performance insight for university football programmes and agency-represented players.</p>
         </div>
       </div>
     </div>
@@ -80,23 +81,34 @@ import Layout from '../layouts/Layout.astro';
     <div class="container">
       <div class="section__header">
         <h2>How It Works</h2>
+        <p>A clear and simple process designed to provide honest, development-focused football assessment.</p>
       </div>
 
       <div class="steps">
         <div class="step">
           <span class="step__number">1</span>
-          <h3>Get in Touch</h3>
-          <p>Tell us about the player or your programme's needs. We'll recommend the right service.</p>
+          <h3>Send Your Footage</h3>
+          <p>You send your match video link (Veo, YouTube, Hudl etc). I review the footage to ensure it is clear enough for assessment.</p>
         </div>
         <div class="step">
           <span class="step__number">2</span>
-          <h3>Assessment</h3>
-          <p>Submit match footage for video analysis, or arrange an in-person observation (UK only).</p>
+          <h3>Assessment Begins</h3>
+          <p>I complete a full analysis of the match, assessing technical, tactical, physical and behavioural elements before producing a detailed written report.</p>
         </div>
         <div class="step">
           <span class="step__number">3</span>
-          <h3>Report & Guidance</h3>
-          <p>Receive a clear, structured report with development priorities, pathway guidance and next steps.</p>
+          <h3>Receive Your Report</h3>
+          <p>Your report is delivered digitally. Depending on the service chosen, you may also receive a Zoom consultation and a full development plan.</p>
+        </div>
+      </div>
+
+      <div class="steps__addons">
+        <h3>Optional add-ons</h3>
+        <div class="addons-list">
+          <span class="addon">Zoom consultation</span>
+          <span class="addon">Development plan</span>
+          <span class="addon">Two-match packages</span>
+          <span class="addon">In-person UK assessment</span>
         </div>
       </div>
     </div>
@@ -155,11 +167,11 @@ import Layout from '../layouts/Layout.astro';
           a player is based.
         </p>
         <div class="global__regions">
-          <span>United Kingdom</span>
-          <span>USA</span>
-          <span>China</span>
-          <span>Australia</span>
-          <span>Middle East</span>
+          <a href="/regions/uk/" class="region-pill">United Kingdom</a>
+          <a href="/regions/usa/" class="region-pill">USA</a>
+          <a href="/regions/china/" class="region-pill">China</a>
+          <a href="/regions/australia/" class="region-pill">Australia</a>
+          <a href="/regions/middle-east/" class="region-pill">Middle East</a>
         </div>
       </div>
     </div>
@@ -173,7 +185,8 @@ import Layout from '../layouts/Layout.astro';
         <p>Book your assessment or request more information today.</p>
       </div>
       <div class="cta__action">
-        <a href="/contact/" class="btn btn--primary">Contact Michael</a>
+        <a href="/bookings/" class="btn btn--primary">Book a Call</a>
+        <a href="/contact/" class="btn btn--outline">Contact Michael</a>
       </div>
     </div>
   </section>
@@ -182,9 +195,9 @@ import Layout from '../layouts/Layout.astro';
 <style>
   /* Hero */
   .hero {
-    padding: 6rem 1.5rem 5rem;
+    padding: 7rem 1.5rem 6rem;
     background:
-      linear-gradient(135deg, rgba(26, 35, 50, 0.82) 0%, rgba(26, 35, 50, 0.7) 100%),
+      linear-gradient(135deg, rgba(26, 35, 50, 0.88) 0%, rgba(26, 35, 50, 0.72) 100%),
       url('/soccer-pitch-ball.avif') center / cover no-repeat;
     color: var(--color-white);
   }
@@ -195,11 +208,13 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .hero .badge {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
+    background-color: rgba(196, 162, 101, 0.15);
   }
 
   .hero h1 {
     margin-bottom: 1.5rem;
+    color: var(--color-white);
   }
 
   .hero p {
@@ -207,10 +222,6 @@ import Layout from '../layouts/Layout.astro';
     color: var(--color-grey-200);
     margin-bottom: 2.5rem;
     max-width: 50ch;
-  }
-
-  .hero h1 {
-    color: var(--color-white);
   }
 
   .hero__actions {
@@ -221,12 +232,13 @@ import Layout from '../layouts/Layout.astro';
 
   .hero .btn--outline {
     color: var(--color-white);
-    border-color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.4);
   }
 
   .hero .btn--outline:hover {
     background-color: var(--color-white);
     color: var(--color-navy);
+    border-color: var(--color-white);
   }
 
   /* Credentials */
@@ -259,7 +271,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .audience-card {
-    padding: 1.75rem;
+    padding: 2rem;
     border: 1px solid var(--color-grey-200);
     border-radius: 6px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -267,11 +279,11 @@ import Layout from '../layouts/Layout.astro';
 
   .audience-card:hover {
     border-color: var(--color-gold);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   }
 
   .audience-card h3 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.625rem;
     font-size: 1.0625rem;
   }
 
@@ -296,14 +308,15 @@ import Layout from '../layouts/Layout.astro';
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
+    width: 3.25rem;
+    height: 3.25rem;
     border-radius: 50%;
-    background-color: var(--color-green);
-    color: var(--color-white);
+    background-color: var(--color-navy);
+    color: var(--color-gold);
     font-size: 1.125rem;
     font-weight: 700;
     margin-bottom: 1.25rem;
+    font-family: var(--font-serif);
   }
 
   .step h3 {
@@ -314,6 +327,39 @@ import Layout from '../layouts/Layout.astro';
     font-size: 0.9375rem;
     color: var(--color-grey-600);
     margin: 0 auto;
+  }
+
+  .steps__addons {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--color-grey-200);
+  }
+
+  .steps__addons h3 {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-grey-400);
+    margin-bottom: 1rem;
+  }
+
+  .addons-list {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .addon {
+    padding: 0.375rem 1rem;
+    font-size: 0.875rem;
+    color: var(--color-navy);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-200);
+    border-radius: 4px;
+    font-weight: 500;
   }
 
   /* Services Split */
@@ -329,6 +375,11 @@ import Layout from '../layouts/Layout.astro';
     border: 1px solid var(--color-grey-200);
     border-radius: 6px;
     overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .service-block:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   }
 
   .service-block__accent {
@@ -336,7 +387,7 @@ import Layout from '../layouts/Layout.astro';
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
+    height: 3px;
     background-color: var(--color-gold);
   }
 
@@ -382,8 +433,17 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: 1.25rem;
   }
 
+  .global h2::after {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 2px;
+    background-color: var(--color-gold);
+    margin: 1rem auto 0;
+  }
+
   .global p {
-    margin: 0 auto 2rem;
+    margin: 0 auto 2.5rem;
     max-width: 55ch;
     opacity: 0.85;
     font-size: 1.0625rem;
@@ -392,28 +452,38 @@ import Layout from '../layouts/Layout.astro';
   .global__regions {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1rem;
     flex-wrap: wrap;
+  }
+
+  .region-pill {
+    display: inline-block;
+    padding: 0.625rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
     font-size: 0.875rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.06em;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
   }
 
-  .global__regions span {
-    padding: 0.5rem 1.25rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
+  .region-pill:hover {
+    border-color: var(--color-gold);
+    background-color: rgba(196, 162, 101, 0.1);
   }
 
   /* CTA */
   .cta__action {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   @media (max-width: 768px) {
     .hero {
-      padding: 3.5rem 1.5rem 3rem;
+      padding: 4rem 1.5rem 3.5rem;
     }
 
     .audience-grid {

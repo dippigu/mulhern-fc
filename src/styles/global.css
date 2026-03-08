@@ -1,8 +1,9 @@
 :root {
   --color-navy: #1a2332;
   --color-navy-light: #243044;
-  --color-gold: #b8860b;
-  --color-gold-hover: #d4a017;
+  --color-gold: #c4a265;
+  --color-gold-hover: #d4b478;
+  --color-gold-muted: rgba(196, 162, 101, 0.12);
   --color-green: #1b4d2e;
   --color-green-light: #2a6b3f;
   --color-white: #ffffff;
@@ -15,6 +16,7 @@
 
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
 
   --max-width: 1120px;
   --section-padding: 5rem 1.5rem;
@@ -62,12 +64,18 @@ h1, h2, h3, h4 {
   letter-spacing: -0.01em;
 }
 
+h1, h2 {
+  font-family: var(--font-serif);
+}
+
 h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  letter-spacing: -0.02em;
 }
 
 h2 {
-  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-size: clamp(1.5rem, 3.5vw, 2.375rem);
+  letter-spacing: -0.015em;
 }
 
 h3 {
@@ -112,6 +120,23 @@ p {
   margin: 1rem auto 0;
   color: var(--color-grey-600);
   max-width: 55ch;
+}
+
+.section__header h2::after {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 2px;
+  background-color: var(--color-gold);
+  margin: 1rem auto 0;
+}
+
+.section__header--left {
+  text-align: left;
+}
+
+.section__header--left h2::after {
+  margin-left: 0;
 }
 
 .btn {
@@ -166,14 +191,23 @@ p {
 
 .badge {
   display: inline-block;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
+  padding: 0.3rem 0.875rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   border-radius: 2px;
   color: var(--color-gold);
   border: 1px solid var(--color-gold);
+  background-color: var(--color-gold-muted);
+}
+
+.gold-rule {
+  display: block;
+  width: 3rem;
+  height: 2px;
+  background-color: var(--color-gold);
+  border: none;
 }
 
 @media (max-width: 768px) {
