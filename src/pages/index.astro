@@ -183,7 +183,10 @@ import Layout from '../layouts/Layout.astro';
   /* Hero */
   .hero {
     padding: 6rem 1.5rem 5rem;
-    background: linear-gradient(135deg, var(--color-off-white) 0%, var(--color-white) 100%);
+    background:
+      linear-gradient(135deg, rgba(26, 35, 50, 0.82) 0%, rgba(26, 35, 50, 0.7) 100%),
+      url('/soccer-pitch-ball.avif') center / cover no-repeat;
+    color: var(--color-white);
   }
 
   .hero__inner {
@@ -201,15 +204,29 @@ import Layout from '../layouts/Layout.astro';
 
   .hero p {
     font-size: 1.125rem;
-    color: var(--color-grey-600);
+    color: var(--color-grey-200);
     margin-bottom: 2.5rem;
     max-width: 50ch;
+  }
+
+  .hero h1 {
+    color: var(--color-white);
   }
 
   .hero__actions {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+  }
+
+  .hero .btn--outline {
+    color: var(--color-white);
+    border-color: var(--color-white);
+  }
+
+  .hero .btn--outline:hover {
+    background-color: var(--color-white);
+    color: var(--color-navy);
   }
 
   /* Credentials */
