@@ -1,4 +1,4 @@
-# MMulFC
+# MulhernFC
 
 Website for Michael Mulhern Football Consultancy Ltd — elite football assessment and development consultancy.
 
