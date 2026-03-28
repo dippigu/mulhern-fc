@@ -34,8 +34,8 @@ import Layout from '../../layouts/Layout.astro';
 
       <div class="report-tiers">
         <div class="report-tier">
-          <span class="report-tier__badge report-tier__badge--bronze">Bronze</span>
-          <h3>Technical & Tactical Analysis</h3>
+          <span class="report-tier__badge">Match Analysis</span>
+          <h3>Technical & Tactical Assessment</h3>
           <p class="report-tier__audience">For the parent or guardian</p>
           <p>
             A detailed written assessment of the player's technical ability,
@@ -46,8 +46,8 @@ import Layout from '../../layouts/Layout.astro';
         </div>
 
         <div class="report-tier">
-          <span class="report-tier__badge report-tier__badge--silver">Silver</span>
-          <h3>Direct Message to the Player</h3>
+          <span class="report-tier__badge">Player Letter</span>
+          <h3>A Personal Message to the Player</h3>
           <p class="report-tier__audience">For the player</p>
           <p>
             A written section addressed personally to the player. This is a
@@ -59,14 +59,15 @@ import Layout from '../../layouts/Layout.astro';
         </div>
 
         <div class="report-tier">
-          <span class="report-tier__badge report-tier__badge--gold">Gold</span>
-          <h3>Parent Education Guide</h3>
+          <span class="report-tier__badge">Development Playbook</span>
+          <h3>A Practical Guide for the Family</h3>
           <p class="report-tier__audience">For the family</p>
           <p>
-            This section educates parents on how to actively support their child's
-            development. It covers the sessions needed, the behaviours to
-            encourage, and how to help without hindering. Most parents want to
-            help but don't know how — this gives them a practical framework.
+            This section equips families with the knowledge to actively support
+            the player's development. It covers the sessions needed, the
+            behaviours to encourage, and how to help without hindering. Most
+            families want to help but don't know how — this gives them a
+            practical framework.
           </p>
         </div>
       </div>
@@ -80,7 +81,8 @@ import Layout from '../../layouts/Layout.astro';
         <h2>Video Analysis</h2>
         <p>
           Submit match footage for a full assessment. Every package includes the
-          complete Bronze, Silver and Gold report.
+          complete three-section report: Match Analysis, Player Letter and
+          Development Playbook.
         </p>
       </div>
 
@@ -173,7 +175,7 @@ import Layout from '../../layouts/Layout.astro';
         <h2>In-Person Assessment</h2>
         <p>
           Live observation of a match or training session in the North of England,
-          followed by the full Bronze, Silver and Gold assessment report.
+          followed by the full three-section assessment report.
         </p>
       </div>
 
@@ -312,18 +314,7 @@ import Layout from '../../layouts/Layout.astro';
     border-radius: 3px;
     margin-bottom: 1rem;
     color: var(--color-white);
-  }
-
-  .report-tier__badge--bronze {
-    background-color: #8B6914;
-  }
-
-  .report-tier__badge--silver {
-    background-color: #6B7280;
-  }
-
-  .report-tier__badge--gold {
-    background-color: var(--color-gold);
+    background-color: var(--color-green);
   }
 
   /* Pricing Tables */
