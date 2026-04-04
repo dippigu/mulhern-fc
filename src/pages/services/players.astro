@@ -4,7 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 
 <Layout
   title="Services for Players & Families"
-  description="Honest, development-focused football assessments for players aged 7-18+. Grounded in elite standards shaped by international football, the WSL and the UK's professional game."
+  description="Honest, development-focused football assessments for players aged 7-18+ worldwide. Grounded in elite standards shaped by international football, the WSL and the professional game."
 >
   <!-- Page Header -->
   <section class="page-header">
@@ -14,7 +14,7 @@ import Layout from '../../layouts/Layout.astro';
       <p class="page-header__subtitle">
         Honest, development-focused football assessments for players aged 7-18+.
         Every assessment is grounded in elite standards shaped by international
-        football, the WSL and the UK's professional game.
+        football, the WSL and the professional game.
       </p>
     </div>
   </section>
@@ -172,7 +172,7 @@ import Layout from '../../layouts/Layout.astro';
   <section class="section">
     <div class="container">
       <div class="section__header">
-        <h2>In-Person Assessment</h2>
+        <h2>In-Person Assessment <span class="uk-only-label">UK Only</span></h2>
         <p>
           Live observation of a match or training session in the North of England,
           followed by the full three-section assessment report.
@@ -228,9 +228,9 @@ import Layout from '../../layouts/Layout.astro';
         <div class="for-item">Players aged 14-18 seeking honest assessment and development guidance</div>
         <div class="for-item">Players aged 18+ preparing for trials, applications or pathway progression</div>
         <div class="for-item">Parents and families seeking clarity and unbiased, development-focused feedback</div>
-        <div class="for-item">Academy and grassroots players at any level</div>
+        <div class="for-item">Academy and grassroots players at any level, anywhere in the world</div>
         <div class="for-item">Players preparing for transitions, trials or university applications</div>
-        <div class="for-item">Players considering UK, USA or international pathways</div>
+        <div class="for-item">Players considering international pathways — including moves to or from the UK, USA, Australia and beyond</div>
       </div>
     </div>
   </section>
@@ -405,6 +405,21 @@ import Layout from '../../layouts/Layout.astro';
     font-weight: 700;
     color: var(--color-gold);
     white-space: nowrap;
+  }
+
+  /* UK Only Label */
+  .uk-only-label {
+    display: inline-block;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background-color: var(--color-gold);
+    color: var(--color-white);
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-left: 0.5rem;
   }
 
   /* Caveat */
