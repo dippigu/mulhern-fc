@@ -6,6 +6,8 @@ const navItems = [
   { label: 'About', href: '/about/' },
   { label: 'Players & Families', href: '/services/players/' },
   { label: 'Clubs & Institutions', href: '/services/institutions/' },
+  { label: 'Partnerships', href: '/partnerships/academies/' },
+  { label: 'FAQs', href: '/faqs/' },
   { label: 'Contact', href: '/contact/' },
 ];
 ---
@@ -13,7 +15,13 @@ const navItems = [
 <header class="header">
   <div class="header__inner container">
     <a href="/" class="header__brand">
-      <span class="header__logo">MMulFC</span>
+      <img
+        src="/mulhern-logo.jpeg"
+        alt="Michael Mulhern Football Consultancy"
+        class="header__logo-img"
+        width="40"
+        height="40"
+      />
     </a>
 
     <button class="header__toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -28,12 +36,15 @@ const navItems = [
           <li>
             <a
               href={href}
-              class:list={['header__link', { 'header__link--active': currentPath === href }]}
+              class:list={['header__link', { 'header__link--active': currentPath === href || (href !== '/' && currentPath.startsWith(href.replace(/\/$/, ''))) }]}
             >
               {label}
             </a>
           </li>
         ))}
+        <li class="header__cta-item">
+          <a href="/bookings/" class="header__cta">Book a Call</a>
+        </li>
       </ul>
     </nav>
   </div>
@@ -63,7 +74,7 @@ const navItems = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 4rem;
+    height: 4.25rem;
   }
 
   .header__brand {
@@ -72,27 +83,29 @@ const navItems = [
     gap: 0.5rem;
   }
 
-  .header__logo {
-    font-size: 1.375rem;
-    font-weight: 800;
-    color: var(--color-navy);
-    letter-spacing: -0.02em;
+  .header__logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
   .header__nav {
     display: flex;
+    align-items: center;
   }
 
   .header__list {
     display: flex;
-    gap: 0.25rem;
+    align-items: center;
+    gap: 0.125rem;
     list-style: none;
   }
 
   .header__link {
     display: block;
-    padding: 0.5rem 0.875rem;
-    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 500;
     color: var(--color-grey-600);
     border-radius: 4px;
@@ -107,6 +120,26 @@ const navItems = [
   .header__link--active {
     color: var(--color-navy);
     font-weight: 600;
+  }
+
+  .header__cta-item {
+    margin-left: 0.75rem;
+  }
+
+  .header__cta {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-white);
+    background-color: var(--color-gold);
+    border-radius: 4px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+  }
+
+  .header__cta:hover {
+    background-color: var(--color-gold-hover);
+    transform: translateY(-1px);
   }
 
   .header__toggle {
@@ -136,7 +169,7 @@ const navItems = [
     .header__nav {
       display: none;
       position: absolute;
-      top: 4rem;
+      top: 4.25rem;
       left: 0;
       right: 0;
       background-color: var(--color-white);
@@ -150,12 +183,26 @@ const navItems = [
 
     .header__list {
       flex-direction: column;
+      align-items: stretch;
       gap: 0;
     }
 
     .header__link {
       padding: 0.75rem 0.5rem;
       font-size: 1rem;
+    }
+
+    .header__cta-item {
+      margin-left: 0;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--color-grey-200);
+    }
+
+    .header__cta {
+      display: block;
+      text-align: center;
+      padding: 0.75rem 1.25rem;
     }
   }
 </style>

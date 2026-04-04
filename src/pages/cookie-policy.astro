@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Cookie Policy"
+  description="How this website uses cookies to improve your browsing experience and analyse website performance."
+>
+  <section class="page-header">
+    <div class="container">
+      <h1>Cookie Policy</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="legal">
+        <p class="legal__intro">
+          This website uses cookies to improve your browsing experience and to
+          help analyse website performance.
+        </p>
+
+        <h2>1. What Are Cookies?</h2>
+        <p>
+          Cookies are small text files that store information about how you use
+          the site. They help improve functionality and performance.
+        </p>
+
+        <h2>2. Types of Cookies Used</h2>
+        <ul>
+          <li><strong>Essential cookies:</strong> Required for the website to function.</li>
+          <li><strong>Analytics cookies:</strong> Used to understand how visitors use the site (via standard analytics tools).</li>
+          <li><strong>Functionality cookies:</strong> Help remember preferences such as page layout.</li>
+        </ul>
+
+        <h2>3. How Cookies Are Used</h2>
+        <p>Cookies may be used to:</p>
+        <ul>
+          <li>Improve website performance</li>
+          <li>Monitor traffic and usage patterns</li>
+          <li>Remember visitor preferences</li>
+        </ul>
+        <p>No cookies are used for advertising or tracking across other websites.</p>
+
+        <h2>4. Managing Cookies</h2>
+        <p>
+          Most web browsers allow you to block or delete cookies through their
+          settings. You can disable them at any time.
+        </p>
+
+        <h2>5. Contact</h2>
+        <p>
+          If you have questions about this Cookie Policy, please contact:
+          <a href="mailto:michael@mulhernfc.com">michael@mulhernfc.com</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding: 4rem 1.5rem 2rem;
+    background-color: var(--color-off-white);
+  }
+
+  .legal {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .legal__intro {
+    font-size: 1.0625rem;
+    color: var(--color-grey-600);
+    margin-bottom: 2.5rem;
+  }
+
+  .legal h2 {
+    font-size: 1.25rem;
+    margin: 2rem 0 0.75rem;
+  }
+
+  .legal h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .legal p {
+    color: var(--color-grey-600);
+    font-size: 0.9375rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal a {
+    color: var(--color-gold);
+    font-weight: 600;
+    transition: color 0.15s ease;
+  }
+
+  .legal a:hover {
+    color: var(--color-gold-hover);
+  }
+
+  .legal ul {
+    list-style: none;
+    margin: 0.5rem 0 1rem;
+  }
+
+  .legal li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.375rem;
+    color: var(--color-grey-600);
+    font-size: 0.9375rem;
+  }
+
+  .legal li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-gold);
+  }
+</style>

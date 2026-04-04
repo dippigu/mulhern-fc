@@ -1,0 +1,166 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Academy Partnerships"
+  description="Trusted, objective and elite-standard evaluation to support academy player development, recruitment and pathway decisions."
+>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <span class="badge">Partnerships</span>
+      <h1>Academy Partnerships</h1>
+      <p class="page-header__subtitle">
+        I work with academies looking for trusted, objective and elite-standard
+        evaluation to support player development, recruitment and pathway
+        decisions. My assessments are shaped by experience across international
+        women's football, the WSL and the UK's professional men's game.
+      </p>
+    </div>
+  </section>
+
+  <!-- What Your Academy Receives -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <h2>What Your Academy Receives</h2>
+      </div>
+
+      <ul class="feature-list">
+        <li>Independent player assessment</li>
+        <li>Written performance and development reports</li>
+        <li>Position-specific guidance</li>
+        <li>Suitability ratings for academy levels</li>
+        <li>Long-list and short-list creation</li>
+        <li>Zoom sessions with coaches or parents</li>
+        <li>Workshops on development, performance and behaviour</li>
+        <li>Priority turnaround and ongoing support</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Packages -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__header">
+        <h2>Academy Partnership Packages</h2>
+        <p>Academies may choose from:</p>
+      </div>
+
+      <div class="packages-grid">
+        <div class="package-card">
+          <h3>Assessment Package</h3>
+          <p>A set number of assessments per term.</p>
+        </div>
+
+        <div class="package-card">
+          <h3>Recruitment Support Package</h3>
+          <p>Long-list, short-list and suitability reporting.</p>
+        </div>
+
+        <div class="package-card">
+          <h3>Full Academy Partnership</h3>
+          <p>Year-round support, workshops, development guidance and priority access.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <h2>Ready to explore a partnership?</h2>
+        <p>Get in touch to discuss the right package for your academy.</p>
+      </div>
+      <div class="cta__action">
+        <a href="/contact/" class="btn btn--primary">Contact Michael</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding: 4rem 1.5rem 2rem;
+    background-color: var(--color-off-white);
+  }
+
+  .page-header .badge {
+    margin-bottom: 1rem;
+  }
+
+  .page-header__subtitle {
+    margin-top: 1.25rem;
+    font-size: 1.0625rem;
+    color: var(--color-grey-600);
+    max-width: 55ch;
+  }
+
+  .feature-list {
+    list-style: none;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .feature-list li {
+    position: relative;
+    padding: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 1.0625rem;
+    color: var(--color-grey-600);
+    border-bottom: 1px solid var(--color-grey-100);
+  }
+
+  .feature-list li:last-child {
+    border-bottom: none;
+  }
+
+  .feature-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.1em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--color-gold);
+  }
+
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .package-card {
+    padding: 2.25rem;
+    border: 1px solid var(--color-grey-200);
+    border-radius: 6px;
+    background-color: var(--color-white);
+    transition: border-color 0.2s ease;
+  }
+
+  .package-card:hover {
+    border-color: var(--color-green);
+  }
+
+  .package-card h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .package-card p {
+    color: var(--color-grey-600);
+    font-size: 0.9375rem;
+  }
+
+  .cta__action {
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .packages-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
