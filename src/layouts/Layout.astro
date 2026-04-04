@@ -6,10 +6,13 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  ogImage?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, ogImage = '/og-image.jpg' } = Astro.props;
 const fullTitle = `${title} | MulhernFC`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL(ogImage, Astro.site);
 ---
 
 <!doctype html>
@@ -18,10 +21,44 @@ const fullTitle = `${title} | MulhernFC`;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#1a2332" />
+    <link rel="canonical" href={canonicalUrl.href} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl.href} />
+    <meta property="og:image" content={ogImageUrl.href} />
+    <meta property="og:site_name" content="Michael Mulhern Football Consultancy" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl.href} />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ProfessionalService',
+      name: 'Michael Mulhern Football Consultancy',
+      url: 'https://mulhernfc.com',
+      logo: 'https://mulhernfc.com/mulhern-logo.jpeg',
+      description: 'International football assessment and development consultancy. UEFA A Licence coach with 20+ years across elite women\'s international football, the WSL and the professional men\'s game.',
+      founder: {
+        '@type': 'Person',
+        name: 'Michael Mulhern',
+        jobTitle: 'UEFA A Licence Football Coach',
+      },
+      areaServed: 'Worldwide',
+      serviceType: ['Football Assessment', 'Player Development', 'Coaching Consultancy'],
+    })} />
+
     <title>{fullTitle}</title>
   </head>
   <body>
