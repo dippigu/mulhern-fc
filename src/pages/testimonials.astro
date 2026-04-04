@@ -1,0 +1,220 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Testimonials"
+  description="Feedback from coaches, parents and families who have worked with Michael Mulhern Football Consultancy."
+>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <span class="badge">Testimonials</span>
+      <h1>What clients say</h1>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section">
+    <div class="container">
+      <div class="testimonials">
+        <article class="testimonial">
+          <blockquote class="testimonial__quote">
+            <p>
+              I worked with Michael Mulhern while studying for my UEFA A Licence
+              and also took part in a number of workshops. The support was
+              thoughtful, challenging, and grounded in real coaching practice
+              rather than theory alone.
+            </p>
+            <p>
+              The mentoring process encouraged reflection, ownership, and a
+              deeper understanding of learning environments in football. That
+              approach had a significant impact on how I developed as a coach and
+              stayed with me as I progressed into professional roles, including
+              coaching at WSL level.
+            </p>
+            <p>
+              I would strongly recommend this work to coaches and organisations
+              who are serious about developing people, not just programmes.
+            </p>
+          </blockquote>
+          <footer class="testimonial__author">
+            <span class="testimonial__name">Vicky Greenwell</span>
+            <span class="testimonial__role">UEFA A Licence Coach, Former WSL Coach, University of Memphis alumni</span>
+          </footer>
+        </article>
+
+        <article class="testimonial">
+          <blockquote class="testimonial__quote">
+            <p>
+              We engaged with Michael to carry out a report for our son, hoping
+              to gain a detailed understanding of his strengths and weaknesses so
+              we could support his development. Michael observed our son on two
+              separate occasions, as we wanted to see how he performed in
+              different game settings. The way Michael handled the process was
+              first class — he operated discreetly, ensuring our child had no
+              idea he was being watched. We felt this approach gave us the most
+              honest and accurate picture of our son as a player.
+            </p>
+            <p>
+              The report Michael produced was incredible. The level of detail was
+              outstanding, and the structure made it easy to follow and put into
+              action. It was completely unbiased and honest, and what surprised
+              us most was how clearly our son's character came through. After
+              only two games, you would think Michael had known him far longer.
+            </p>
+            <p>
+              The analysis of strengths and weaknesses was clear, constructive,
+              and supported by a four-week development plan that we were able to
+              implement immediately. We especially valued the separate parent and
+              player sections. Our son could read about his strengths and areas
+              for improvement in a way written specifically for him. The "bottle
+              checklist" was a brilliant addition — simple, snappy, and something
+              he now refers to during games, exactly as intended, helping him
+              refocus before, during, and after matches.
+            </p>
+            <p>
+              Another standout feature was the parents' checklist for what to say
+              after a game. When emotions run high, it's the perfect reminder for
+              any parent.
+            </p>
+            <p>
+              We would absolutely recommend Michael to any parent with a player
+              at any level who wants honest, professional guidance on how to help
+              their child improve. He is a total professional who provides far
+              more than just a report. The work he puts in beforehand to
+              understand the player, the depth and clarity of the report itself,
+              and the ongoing support he offers afterwards are truly outstanding.
+            </p>
+          </blockquote>
+          <footer class="testimonial__author">
+            <span class="testimonial__name">Lisa Malloy</span>
+            <span class="testimonial__role">Durham, UK</span>
+          </footer>
+        </article>
+
+        <article class="testimonial">
+          <blockquote class="testimonial__quote">
+            <p>
+              My son is a high level U13 goalkeeper. He kept asking me what areas
+              he could improve on to try and get his chance to push into an
+              academy. Being a parent with little knowledge in goalkeeping, I
+              couldn't answer this. So after finding out about Michael Mulhern
+              Football Consultancy, I got in touch with Michael who found out
+              more about Kai. We all agreed that to get full knowledge of Kai's
+              possible improvement areas it would be good to get a report on
+              three matches rather than just one.
+            </p>
+            <p>
+              After doing this and finding out the areas Kai needed to improve
+              on, Michael wrote a full detailed report which also included a
+              player and parent pack. After reading this and spending a classroom
+              session with Michael, my son has massively improved on the areas
+              that needed tweaked.
+            </p>
+            <p>
+              We still have a way to go to get to academy level but Michael and
+              my son meet up or chat weekly to improve on these areas. This has
+              by far been the best decision in his football journey because we
+              now know exactly what areas we need to work on.
+            </p>
+          </blockquote>
+          <footer class="testimonial__author">
+            <span class="testimonial__name">Steve Wood</span>
+            <span class="testimonial__role">Berwick, UK</span>
+          </footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__header">
+        <h2>Ready to get started?</h2>
+        <p>Get in touch to discuss how Michael can help.</p>
+      </div>
+      <div class="cta__action">
+        <a href="/contact/" class="btn btn--primary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding: 4rem 1.5rem 2rem;
+    background-color: var(--color-off-white);
+  }
+
+  .page-header .badge {
+    margin-bottom: 1rem;
+  }
+
+  .testimonials {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .testimonial {
+    padding: 2.5rem;
+    border: 1px solid var(--color-grey-200);
+    border-radius: 6px;
+    transition: border-color 0.2s ease;
+  }
+
+  .testimonial:hover {
+    border-color: var(--color-gold);
+  }
+
+  .testimonial__quote {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 3px solid var(--color-gold);
+  }
+
+  .testimonial__quote p {
+    font-size: 0.9375rem;
+    color: var(--color-grey-600);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial__quote p:last-child {
+    margin-bottom: 0;
+  }
+
+  .testimonial__author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-grey-200);
+  }
+
+  .testimonial__name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-navy);
+  }
+
+  .testimonial__role {
+    font-size: 0.8125rem;
+    color: var(--color-grey-400);
+  }
+
+  .cta__action {
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .testimonial {
+      padding: 1.5rem;
+    }
+  }
+</style>
