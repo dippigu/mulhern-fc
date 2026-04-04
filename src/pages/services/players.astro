@@ -74,8 +74,28 @@ import Layout from '../../layouts/Layout.astro';
     </div>
   </section>
 
+  <!-- Currency Selector -->
+  <section class="section section--alt currency-bar-section">
+    <div class="container">
+      <div class="currency-bar">
+        <label for="currency-select" class="currency-bar__label">Display prices in</label>
+        <select id="currency-select" class="currency-bar__select">
+          <option value="GBP" selected>GBP (£)</option>
+          <option value="USD">USD ($)</option>
+          <option value="EUR">EUR (€)</option>
+          <option value="AUD">AUD (A$)</option>
+          <option value="CAD">CAD (C$)</option>
+          <option value="CNY">CNY (¥)</option>
+          <option value="HKD">HKD (HK$)</option>
+          <option value="NZD">NZD (NZ$)</option>
+        </select>
+        <span class="currency-bar__note">Converted prices are approximate</span>
+      </div>
+    </div>
+  </section>
+
   <!-- Video Analysis -->
-  <section class="section section--alt">
+  <section class="section section--alt" style="padding-top: 0;">
     <div class="container">
       <div class="section__header">
         <h2>Video Analysis</h2>
@@ -95,7 +115,7 @@ import Layout from '../../layouts/Layout.astro';
                 <span class="pricing-row__name">Single Match Report</span>
                 <span class="pricing-row__detail">1 game</span>
               </div>
-              <span class="pricing-row__price">£149</span>
+              <span class="pricing-row__price" data-gbp="149">£149</span>
             </div>
             <div class="pricing-row pricing-row--recommended">
               <div class="pricing-row__info">
@@ -103,21 +123,21 @@ import Layout from '../../layouts/Layout.astro';
                 <span class="pricing-row__detail">2 games</span>
                 <span class="pricing-row__label">Recommended</span>
               </div>
-              <span class="pricing-row__price">£249</span>
+              <span class="pricing-row__price" data-gbp="249">£249</span>
             </div>
             <div class="pricing-row">
               <div class="pricing-row__info">
                 <span class="pricing-row__name">Extended Assessment</span>
                 <span class="pricing-row__detail">3 games</span>
               </div>
-              <span class="pricing-row__price">£329</span>
+              <span class="pricing-row__price" data-gbp="329">£329</span>
             </div>
             <div class="pricing-row">
               <div class="pricing-row__info">
                 <span class="pricing-row__name">Full Assessment</span>
                 <span class="pricing-row__detail">4 games</span>
               </div>
-              <span class="pricing-row__price">£399</span>
+              <span class="pricing-row__price" data-gbp="399">£399</span>
             </div>
           </div>
         </div>
@@ -135,21 +155,21 @@ import Layout from '../../layouts/Layout.astro';
                 <span class="pricing-row__detail">2 games</span>
                 <span class="pricing-row__label">Recommended</span>
               </div>
-              <span class="pricing-row__price">£319</span>
+              <span class="pricing-row__price" data-gbp="319">£319</span>
             </div>
             <div class="pricing-row">
               <div class="pricing-row__info">
                 <span class="pricing-row__name">Extended + Zoom</span>
                 <span class="pricing-row__detail">3 games</span>
               </div>
-              <span class="pricing-row__price">£399</span>
+              <span class="pricing-row__price" data-gbp="399">£399</span>
             </div>
             <div class="pricing-row">
               <div class="pricing-row__info">
                 <span class="pricing-row__name">Full + Zoom</span>
                 <span class="pricing-row__detail">4 games</span>
               </div>
-              <span class="pricing-row__price">£479</span>
+              <span class="pricing-row__price" data-gbp="479">£479</span>
             </div>
           </div>
         </div>
@@ -187,7 +207,7 @@ import Layout from '../../layouts/Layout.astro';
                 <span class="pricing-row__name">In-Person Standard</span>
                 <span class="pricing-row__detail">Live observation + full report</span>
               </div>
-              <span class="pricing-row__price">£299</span>
+              <span class="pricing-row__price" data-gbp="299">£299</span>
             </div>
             <div class="pricing-row pricing-row--recommended">
               <div class="pricing-row__info">
@@ -195,14 +215,14 @@ import Layout from '../../layouts/Layout.astro';
                 <span class="pricing-row__detail">Live observation + full report + Zoom follow-up</span>
                 <span class="pricing-row__label">Best Value</span>
               </div>
-              <span class="pricing-row__price">£369</span>
+              <span class="pricing-row__price" data-gbp="369">£369</span>
             </div>
             <div class="pricing-row">
               <div class="pricing-row__info">
                 <span class="pricing-row__name">Zoom Follow-Up</span>
                 <span class="pricing-row__detail">Add-on for existing in-person clients</span>
               </div>
-              <span class="pricing-row__price">£75</span>
+              <span class="pricing-row__price" data-gbp="75">£75</span>
             </div>
           </div>
         </div>
@@ -249,6 +269,33 @@ import Layout from '../../layouts/Layout.astro';
   </section>
 </Layout>
 
+<script>
+  const rates: Record<string, { rate: number; symbol: string; decimals: number }> = {
+    GBP: { rate: 1, symbol: '£', decimals: 0 },
+    USD: { rate: 1.26, symbol: '$', decimals: 0 },
+    EUR: { rate: 1.17, symbol: '€', decimals: 0 },
+    AUD: { rate: 1.93, symbol: 'A$', decimals: 0 },
+    CAD: { rate: 1.72, symbol: 'C$', decimals: 0 },
+    CNY: { rate: 9.15, symbol: '¥', decimals: 0 },
+    HKD: { rate: 9.85, symbol: 'HK$', decimals: 0 },
+    NZD: { rate: 2.10, symbol: 'NZ$', decimals: 0 },
+  };
+
+  function updatePrices(currency: string): void {
+    const { rate, symbol, decimals } = rates[currency];
+    const prices = document.querySelectorAll<HTMLElement>('[data-gbp]');
+
+    for (const el of prices) {
+      const gbp = Number(el.dataset.gbp);
+      const converted = Math.round(gbp * rate);
+      el.textContent = `${symbol}${converted.toLocaleString('en', { minimumFractionDigits: decimals })}`;
+    }
+  }
+
+  const select = document.querySelector<HTMLSelectElement>('#currency-select');
+  select?.addEventListener('change', () => updatePrices(select.value));
+</script>
+
 <style>
   .page-header {
     padding: 4rem 1.5rem 2rem;
@@ -264,6 +311,47 @@ import Layout from '../../layouts/Layout.astro';
     font-size: 1.0625rem;
     color: var(--color-grey-600);
     max-width: 55ch;
+  }
+
+  /* Currency Bar */
+  .currency-bar-section {
+    padding-bottom: 0;
+  }
+
+  .currency-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .currency-bar__label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .currency-bar__select {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-navy);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-200);
+    border-radius: 4px;
+    cursor: pointer;
+    appearance: auto;
+  }
+
+  .currency-bar__select:focus {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 1px;
+  }
+
+  .currency-bar__note {
+    font-size: 0.8125rem;
+    color: var(--color-grey-400);
+    font-style: italic;
   }
 
   /* Report Tiers */
