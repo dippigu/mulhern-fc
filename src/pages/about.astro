@@ -47,8 +47,41 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- Experience -->
+  <!-- Awards -->
   <section class="section section--alt">
+    <div class="container">
+      <div class="section__header">
+        <h2>Awards</h2>
+        <p>Recognition for coaching excellence, player development and contribution to the game.</p>
+      </div>
+
+      <div class="awards-grid">
+        <div class="award-card">
+          <span class="award-card__icon">&#9733;</span>
+          <h3>FA Coach of the Year</h3>
+          <p>Awarded on three occasions in recognition of coaching excellence, player development and contribution to the game.</p>
+          <span class="award-card__years">2009, 2011, 2013</span>
+        </div>
+
+        <div class="award-card">
+          <span class="award-card__icon">&#9733;</span>
+          <h3>Lifetime Achievement Award</h3>
+          <p>North East Sports Awards, recognising sustained contribution to sport in the region.</p>
+          <span class="award-card__years">2014</span>
+        </div>
+
+        <div class="award-card">
+          <span class="award-card__icon">&#9733;</span>
+          <h3>Northern Premier League Manager of the Month</h3>
+          <p>Awarded twice whilst managing Middlesbrough Women.</p>
+          <span class="award-card__years">January 2024, April 2025</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section">
     <div class="container">
       <div class="section__header">
         <h2>Experience</h2>
@@ -182,6 +215,51 @@ import Layout from '../layouts/Layout.astro';
     color: var(--color-grey-600);
   }
 
+  /* Awards Grid */
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .award-card {
+    padding: 2rem;
+    background-color: var(--color-white);
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .award-card__icon {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+  }
+
+  .award-card h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .award-card p {
+    font-size: 0.9375rem;
+    color: var(--color-grey-600);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .award-card__years {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    background-color: var(--color-off-white);
+    border-radius: 4px;
+  }
+
   /* Experience Grid */
   .experience-grid {
     display: grid;
@@ -261,6 +339,10 @@ import Layout from '../layouts/Layout.astro';
       width: 200px;
       height: 200px;
       margin: 0 auto;
+    }
+
+    .awards-grid {
+      grid-template-columns: 1fr;
     }
 
     .experience-grid {
