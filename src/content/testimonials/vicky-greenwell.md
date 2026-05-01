@@ -1,5 +1,5 @@
 ---
-name: Vicky Greenwall
+name: Vicky Greenwell
 role: UEFA A Licence Coach, Former WSL Coach, University of Memphis alumni
 order: 1
 ---
