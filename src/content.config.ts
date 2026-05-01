@@ -20,4 +20,26 @@ const awards = defineCollection({
   }),
 });
 
-export const collections = { testimonials, awards };
+const titleBody = z.object({
+  title: z.string(),
+  body: z.string(),
+});
+
+const pages = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/pages' }),
+  schema: z.object({
+    breadcrumb: z.string(),
+    title: z.string(),
+    lead: z.string(),
+    tags: z.array(z.string()).default([]),
+    partnership: z.string().optional(),
+    features: z.array(titleBody).default([]),
+    topics: z.array(titleBody).default([]),
+    formats: z.array(titleBody).default([]),
+    audiences: z.array(titleBody).default([]),
+    ctaHeading: z.string(),
+    ctaBody: z.string(),
+  }),
+});
+
+export const collections = { testimonials, awards, pages };

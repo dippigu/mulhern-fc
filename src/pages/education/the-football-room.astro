@@ -1,0 +1,315 @@
+---
+import { getEntry, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const entry = await getEntry('pages', 'the-football-room');
+if (!entry) {
+  throw new Error('Missing content entry: pages/the-football-room');
+}
+
+const { Content } = await render(entry);
+const {
+  breadcrumb,
+  title,
+  lead,
+  tags,
+  partnership,
+  features,
+  topics,
+  formats,
+  audiences,
+  ctaHeading,
+  ctaBody,
+} = entry.data;
+
+const formatNumber = (n: number) => String(n + 1).padStart(2, '0');
+---
+
+<Layout
+  title={title}
+  description={lead}
+>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <span class="badge">{breadcrumb}</span>
+      <h1>{title}</h1>
+      <p class="page-header__subtitle">{lead}</p>
+      {tags.length > 0 && (
+        <ul class="tag-pills">
+          {tags.map((tag) => <li class="tag-pill">{tag}</li>)}
+        </ul>
+      )}
+    </div>
+  </section>
+
+  {partnership && (
+    <section class="section section--alt">
+      <div class="container">
+        <aside class="partnership-callout">
+          <p>{partnership}</p>
+        </aside>
+      </div>
+    </section>
+  )}
+
+  <!-- About the workshops -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <h2>About the workshops</h2>
+      </div>
+      <div class="prose">
+        <Content />
+      </div>
+
+      {features.length > 0 && (
+        <div class="numbered-grid numbered-grid--two">
+          {features.map((item, i) => (
+            <div class="numbered-card">
+              <span class="numbered-card__num">{formatNumber(i)}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  {topics.length > 0 && (
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__header">
+          <h2>Workshop topics</h2>
+          <p>Sessions are built around the topics below — each one delivered as a structured discussion, not a lecture.</p>
+        </div>
+        <div class="numbered-grid numbered-grid--three">
+          {topics.map((item, i) => (
+            <div class="numbered-card">
+              <span class="numbered-card__num">{formatNumber(i)}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {formats.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section__header">
+          <h2>Format &amp; delivery</h2>
+        </div>
+        <div class="card-grid card-grid--three">
+          {formats.map((item) => (
+            <div class="info-card">
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {audiences.length > 0 && (
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__header">
+          <h2>Who you'll be engaging with</h2>
+        </div>
+        <div class="card-grid card-grid--two">
+          {audiences.map((item) => (
+            <div class="info-card">
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="section cta">
+    <div class="container">
+      <div class="section__header">
+        <h2>{ctaHeading}</h2>
+        <p>{ctaBody}</p>
+      </div>
+      <div class="cta__action">
+        <a href="/contact/" class="btn btn--primary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding: 4rem 1.5rem 2.5rem;
+    background-color: var(--color-off-white);
+  }
+
+  .page-header .badge {
+    margin-bottom: 1rem;
+  }
+
+  .page-header h1 {
+    max-width: 22ch;
+  }
+
+  .page-header__subtitle {
+    margin-top: 1.25rem;
+    font-size: 1.0625rem;
+    color: var(--color-grey-600);
+    max-width: 65ch;
+  }
+
+  .tag-pills {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.75rem;
+  }
+
+  .tag-pill {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-200);
+    border-radius: 999px;
+  }
+
+  .partnership-callout {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    background-color: var(--color-white);
+    border-left: 3px solid var(--color-gold);
+    border-radius: 0 6px 6px 0;
+  }
+
+  .partnership-callout p {
+    margin: 0;
+    color: var(--color-grey-600);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+
+  .prose {
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+
+  .prose :global(p) {
+    margin-bottom: 1.25rem;
+    color: var(--color-grey-600);
+    line-height: 1.8;
+  }
+
+  .prose :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .numbered-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .numbered-grid--two {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .numbered-grid--three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .numbered-card {
+    padding: 2rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-200);
+    border-radius: 6px;
+  }
+
+  .numbered-card__num {
+    display: inline-block;
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+  }
+
+  .numbered-card h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .numbered-card p {
+    font-size: 0.9375rem;
+    color: var(--color-grey-600);
+    line-height: 1.7;
+  }
+
+  .card-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .card-grid--two {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .card-grid--three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .info-card {
+    padding: 2rem;
+    border: 1px solid var(--color-grey-200);
+    border-radius: 6px;
+    background-color: var(--color-white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .info-card:hover {
+    border-color: var(--color-gold);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .info-card h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 0.625rem;
+  }
+
+  .info-card p {
+    font-size: 0.9375rem;
+    color: var(--color-grey-600);
+    line-height: 1.7;
+  }
+
+  .cta__action {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .numbered-grid--two,
+    .numbered-grid--three,
+    .card-grid--two,
+    .card-grid--three {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

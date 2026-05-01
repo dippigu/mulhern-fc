@@ -68,6 +68,78 @@ content:
         type: number
         required: true
 
+  - name: pages
+    label: Pages
+    type: collection
+    path: src/content/pages
+    format: yaml-frontmatter
+    view:
+      fields: [title, breadcrumb]
+    filename:
+      template: '{title}.md'
+      field: false
+    fields:
+      - name: breadcrumb
+        label: Section label (small text above title)
+        type: string
+        required: true
+      - name: title
+        label: Page title
+        type: string
+        required: true
+      - name: lead
+        label: Lead paragraph
+        type: text
+        required: true
+      - name: tags
+        label: Tag pills
+        type: string
+        list: true
+      - name: partnership
+        label: Partnership callout (optional)
+        type: text
+        description: 'Highlighted box near the top of the page. Leave blank to hide.'
+      - name: body
+        label: About-the-workshops body
+        type: rich-text
+        required: true
+      - name: features
+        label: About-the-workshops feature points
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Title, type: string, required: true }
+          - { name: body, label: Body, type: text, required: true }
+      - name: topics
+        label: Workshop topics
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Title, type: string, required: true }
+          - { name: body, label: Body, type: text, required: true }
+      - name: formats
+        label: Format & delivery options
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Title, type: string, required: true }
+          - { name: body, label: Body, type: text, required: true }
+      - name: audiences
+        label: Target audiences
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Title, type: string, required: true }
+          - { name: body, label: Body, type: text, required: true }
+      - name: ctaHeading
+        label: Call-to-action heading
+        type: string
+        required: true
+      - name: ctaBody
+        label: Call-to-action body
+        type: text
+        required: true
+
   - name: site-settings
     label: Site settings
     type: file
