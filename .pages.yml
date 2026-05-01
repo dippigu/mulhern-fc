@@ -15,8 +15,7 @@ content:
         sort: order
         order: asc
     filename:
-      pattern: '{name}.md'
-      slug: name
+      template: '{name}.md'
     fields:
       - name: name
         label: Name
@@ -49,8 +48,7 @@ content:
         sort: order
         order: asc
     filename:
-      pattern: '{title}.json'
-      slug: title
+      template: '{title}.json'
     fields:
       - name: title
         label: Award title
