@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import site from '../data/site.json';
 import '../styles/global.css';
 
 interface Props {
@@ -9,10 +10,11 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description, ogImage = '/og-image.jpg' } = Astro.props;
+const { title, description, ogImage = site.ogImage } = Astro.props;
 const fullTitle = `${title} | MulhernFC`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL(ogImage, Astro.site);
+const logoUrl = new URL(site.profileImage, Astro.site).href;
 ---
 
 <!doctype html>
@@ -48,7 +50,7 @@ const ogImageUrl = new URL(ogImage, Astro.site);
       '@type': 'ProfessionalService',
       name: 'Michael Mulhern Football Consultancy',
       url: 'https://mulhernfc.com',
-      logo: 'https://mulhernfc.com/mulhern-logo.jpeg',
+      logo: logoUrl,
       description: 'International football assessment and development consultancy. UEFA A Licence coach with 20+ years across elite women\'s international football, the WSL and the professional men\'s game.',
       founder: {
         '@type': 'Person',

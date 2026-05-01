@@ -1,0 +1,89 @@
+media:
+  input: public/uploads
+  output: /uploads
+
+content:
+  - name: testimonials
+    label: Testimonials
+    type: collection
+    path: src/content/testimonials
+    format: yaml-frontmatter
+    view:
+      fields: [name, role, order]
+      sort: [order]
+      default:
+        sort: order
+        order: asc
+    filename:
+      pattern: '{name}.md'
+      slug: name
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: role
+        label: Role or location
+        type: string
+        required: true
+        description: 'e.g. "Durham, UK" or "UEFA A Licence Coach"'
+      - name: order
+        label: Display order
+        type: number
+        required: true
+        description: 'Lower numbers appear first'
+      - name: body
+        label: Quote
+        type: rich-text
+        required: true
+
+  - name: awards
+    label: Awards
+    type: collection
+    path: src/content/awards
+    format: json
+    view:
+      fields: [title, years, order]
+      sort: [order]
+      default:
+        sort: order
+        order: asc
+    filename:
+      pattern: '{title}.json'
+      slug: title
+    fields:
+      - name: title
+        label: Award title
+        type: string
+        required: true
+      - name: blurb
+        label: Description
+        type: text
+        required: true
+      - name: years
+        label: Years awarded
+        type: string
+        required: true
+        description: 'e.g. "2009, 2011, 2013"'
+      - name: order
+        label: Display order
+        type: number
+        required: true
+
+  - name: site-settings
+    label: Site settings
+    type: file
+    path: src/data/site.json
+    format: json
+    fields:
+      - name: profileImage
+        label: Profile photo
+        type: image
+        description: 'Used in the header logo and on the About page'
+      - name: heroImage
+        label: Home page hero background
+        type: image
+      - name: ogImage
+        label: Social share image
+        type: image
+        description: 'Shown when the site is shared on social media'

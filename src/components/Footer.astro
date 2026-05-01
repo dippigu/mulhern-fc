@@ -1,4 +1,6 @@
 ---
+import site from '../data/site.json';
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -7,7 +9,7 @@ const currentYear = new Date().getFullYear();
     <div class="footer__top">
       <div class="footer__brand">
         <img
-          src="/mulhern-logo.jpeg"
+          src={site.profileImage}
           alt="Michael Mulhern Football Consultancy"
           class="footer__logo-img"
           width="56"

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import site from '../data/site.json';
 ---
 
 <Layout
@@ -7,7 +8,7 @@ import Layout from '../layouts/Layout.astro';
   description="International football assessment and development consultancy. UEFA A Licence coach with 20+ years across elite women's international football, the WSL and the professional men's game."
 >
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero" style={`--hero-image: url('${site.heroImage}')`}>
     <div class="hero__inner container">
       <span class="badge">UEFA A Licence Coach</span>
       <h1>International football assessment<br />and development consultancy</h1>
@@ -199,7 +200,7 @@ import Layout from '../layouts/Layout.astro';
     padding: 7rem 1.5rem 6rem;
     background:
       linear-gradient(135deg, rgba(26, 35, 50, 0.88) 0%, rgba(26, 35, 50, 0.72) 100%),
-      url('/soccer-pitch-ball.avif') center / cover no-repeat;
+      var(--hero-image) center / cover no-repeat;
     color: var(--color-white);
   }
 

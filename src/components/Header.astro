@@ -1,4 +1,6 @@
 ---
+import site from '../data/site.json';
+
 const currentPath = Astro.url.pathname;
 
 const navItems = [
@@ -17,7 +19,7 @@ const navItems = [
   <div class="header__inner container">
     <a href="/" class="header__brand">
       <img
-        src="/mulhern-logo.jpeg"
+        src={site.profileImage}
         alt="Michael Mulhern Football Consultancy"
         class="header__logo-img"
         width="40"

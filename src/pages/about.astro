@@ -1,5 +1,11 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import site from '../data/site.json';
+
+const awards = (await getCollection('awards')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 ---
 
 <Layout
@@ -20,7 +26,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="bio-layout">
         <div class="bio-image">
           <img
-            src="/mulhern-logo.jpeg"
+            src={site.profileImage}
             alt="Michael Mulhern Football Consultancy"
             width="300"
             height="300"
@@ -56,26 +62,14 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="awards-grid">
-        <div class="award-card">
-          <span class="award-card__icon">&#9733;</span>
-          <h3>FA Coach of the Year</h3>
-          <p>Awarded on three occasions in recognition of coaching excellence, player development and contribution to the game.</p>
-          <span class="award-card__years">2009, 2011, 2013</span>
-        </div>
-
-        <div class="award-card">
-          <span class="award-card__icon">&#9733;</span>
-          <h3>Lifetime Achievement Award</h3>
-          <p>North East Sports Awards, recognising sustained contribution to sport in the region.</p>
-          <span class="award-card__years">2014</span>
-        </div>
-
-        <div class="award-card">
-          <span class="award-card__icon">&#9733;</span>
-          <h3>Northern Premier League Manager of the Month</h3>
-          <p>Awarded twice whilst managing Middlesbrough Women.</p>
-          <span class="award-card__years">January 2024, April 2025</span>
-        </div>
+        {awards.map((award) => (
+          <div class="award-card">
+            <span class="award-card__icon">&#9733;</span>
+            <h3>{award.data.title}</h3>
+            <p>{award.data.blurb}</p>
+            <span class="award-card__years">{award.data.years}</span>
+          </div>
+        ))}
       </div>
     </div>
   </section>
