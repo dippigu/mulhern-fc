@@ -1,6 +1,6 @@
 ---
 name: Heather Swan
-role: Newcastle
+role: Newcastle, UK
 order: 4
 ---
 Michael has been working with my son Seb (18), who is aiming to progress at a professional level, and the experience has been extremely positive.
