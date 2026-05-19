@@ -68,6 +68,99 @@ content:
         type: number
         required: true
 
+  - name: services
+    label: Service pages
+    type: collection
+    path: src/content/services
+    format: yaml-frontmatter
+    view:
+      fields: [title, breadcrumb, order]
+      sort: [order]
+      default:
+        sort: order
+        order: asc
+    filename:
+      template: '{title}.md'
+      field: false
+    fields:
+      - name: breadcrumb
+        label: Section label (small text above title)
+        type: string
+        required: true
+        description: 'Usually "Services" — appears as a small pill above the page title'
+      - name: title
+        label: Page title
+        type: string
+        required: true
+      - name: lead
+        label: Lead paragraph
+        type: text
+        required: true
+      - name: order
+        label: Menu order
+        type: number
+        required: true
+        description: 'Lower numbers appear first in the Services dropdown'
+      - name: tags
+        label: Tag pills (optional)
+        type: string
+        list: true
+      - name: body
+        label: Intro body (optional)
+        type: rich-text
+        description: 'Appears below the header. Use for context paragraphs.'
+      - name: features
+        label: Feature cards (optional)
+        type: object
+        list: true
+        description: 'Top-of-page card grid — what is included, what you get, etc.'
+        fields:
+          - { name: title, label: Title, type: string, required: true }
+          - { name: body, label: Body, type: text, required: true }
+      - name: packageGroups
+        label: Package groups (optional)
+        type: object
+        list: true
+        description: 'Pricing tables and package lists. Each group can have its own heading, description and items. Leave price blank for unpriced packages.'
+        fields:
+          - { name: title, label: Group title, type: string, required: true }
+          - { name: description, label: Group description, type: text }
+          - { name: note, label: 'Note / caveat (rendered as a callout below the items)', type: text }
+          - { name: ukOnly, label: 'UK only (shows a "UK Only" badge)', type: boolean, default: false }
+          - name: items
+            label: Items
+            type: object
+            list: true
+            fields:
+              - { name: name, label: Name, type: string, required: true }
+              - { name: detail, label: Detail (e.g. "2 games"), type: string }
+              - { name: priceGBP, label: Price in GBP (leave blank for unpriced), type: number }
+              - { name: recommendedLabel, label: 'Badge label (e.g. "Recommended", "Best Value")', type: string }
+      - name: audiences
+        label: Audience cards (optional)
+        type: object
+        list: true
+        description: 'Who this is for — card grid'
+        fields:
+          - { name: title, label: Title, type: string, required: true }
+          - { name: body, label: Body, type: text, required: true }
+      - name: process
+        label: Process / format cards (optional)
+        type: object
+        list: true
+        description: 'How it works — formats, delivery, process'
+        fields:
+          - { name: title, label: Title, type: string, required: true }
+          - { name: body, label: Body, type: text, required: true }
+      - name: ctaHeading
+        label: Call-to-action heading
+        type: string
+        required: true
+      - name: ctaBody
+        label: Call-to-action body
+        type: text
+        required: true
+
   - name: pages
     label: Pages
     type: collection

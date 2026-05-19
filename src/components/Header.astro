@@ -3,16 +3,38 @@ import site from '../data/site.json';
 
 const currentPath = Astro.url.pathname;
 
-const navItems = [
+interface NavChild {
+  label: string;
+  href: string;
+}
+
+interface NavItem {
+  label: string;
+  href?: string;
+  children?: NavChild[];
+}
+
+const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about/' },
-  { label: 'Players & Families', href: '/services/players/' },
-  { label: 'Clubs & Institutions', href: '/services/institutions/' },
-  { label: 'Partnerships', href: '/partnerships/academies/' },
+  {
+    label: 'Services',
+    children: [
+      { label: 'Player Analysis', href: '/services/player-analysis/' },
+      { label: 'Player Pathways', href: '/services/player-pathways/' },
+      { label: 'Workshops & Presentations', href: '/services/workshops-and-presentations/' },
+    ],
+  },
   { label: 'Football Education', href: '/education/the-football-room/' },
   { label: 'Testimonials', href: '/testimonials/' },
   { label: 'FAQs', href: '/faqs/' },
 ];
+
+const isActive = (href: string): boolean =>
+  currentPath === href || (href !== '/' && currentPath.startsWith(href.replace(/\/$/, '')));
+
+const isParentActive = (children: NavChild[]): boolean =>
+  children.some((child) => isActive(child.href));
 ---
 
 <header class="header">
@@ -35,15 +57,41 @@ const navItems = [
 
     <nav class="header__nav" aria-label="Main navigation">
       <ul class="header__list">
-        {navItems.map(({ label, href }) => (
-          <li>
-            <a
-              href={href}
-              class:list={['header__link', { 'header__link--active': currentPath === href || (href !== '/' && currentPath.startsWith(href.replace(/\/$/, ''))) }]}
-            >
-              {label}
-            </a>
-          </li>
+        {navItems.map((item) => (
+          item.children ? (
+            <li class="header__item header__item--has-children">
+              <button
+                type="button"
+                class:list={['header__link', 'header__link--parent', { 'header__link--active': isParentActive(item.children) }]}
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                {item.label}
+                <span class="header__caret" aria-hidden="true">▾</span>
+              </button>
+              <ul class="header__submenu">
+                {item.children.map((child) => (
+                  <li>
+                    <a
+                      href={child.href}
+                      class:list={['header__sublink', { 'header__sublink--active': isActive(child.href) }]}
+                    >
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ) : (
+            <li class="header__item">
+              <a
+                href={item.href}
+                class:list={['header__link', { 'header__link--active': isActive(item.href!) }]}
+              >
+                {item.label}
+              </a>
+            </li>
+          )
         ))}
         <li class="header__cta-item">
           <a href="/contact/" class="header__cta">Get in Touch</a>
@@ -54,13 +102,53 @@ const navItems = [
 </header>
 
 <script>
-  const toggle = document.querySelector('.header__toggle');
-  const nav = document.querySelector('.header__nav');
+  const toggle = document.querySelector<HTMLButtonElement>('.header__toggle');
+  const nav = document.querySelector<HTMLElement>('.header__nav');
 
   toggle?.addEventListener('click', () => {
     const expanded = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!expanded));
     nav?.classList.toggle('header__nav--open');
+  });
+
+  const dropdownButtons = document.querySelectorAll<HTMLButtonElement>('.header__link--parent');
+
+  dropdownButtons.forEach((button) => {
+    const item = button.closest('.header__item--has-children');
+    if (!item) return;
+
+    button.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+      dropdownButtons.forEach((other) => {
+        if (other !== button) {
+          other.setAttribute('aria-expanded', 'false');
+          other.closest('.header__item--has-children')?.classList.remove('header__item--open');
+        }
+      });
+
+      button.setAttribute('aria-expanded', String(!isOpen));
+      item.classList.toggle('header__item--open', !isOpen);
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) return;
+    if (event.target.closest('.header__item--has-children')) return;
+
+    dropdownButtons.forEach((button) => {
+      button.setAttribute('aria-expanded', 'false');
+      button.closest('.header__item--has-children')?.classList.remove('header__item--open');
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    dropdownButtons.forEach((button) => {
+      button.setAttribute('aria-expanded', 'false');
+      button.closest('.header__item--has-children')?.classList.remove('header__item--open');
+    });
   });
 </script>
 
@@ -105,13 +193,23 @@ const navItems = [
     list-style: none;
   }
 
+  .header__item {
+    position: relative;
+  }
+
   .header__link {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
     padding: 0.5rem 0.75rem;
     font-size: 0.8125rem;
     font-weight: 500;
     color: var(--color-grey-600);
+    background: none;
+    border: none;
     border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
     transition: color 0.15s ease, background-color 0.15s ease;
   }
 
@@ -123,6 +221,63 @@ const navItems = [
   .header__link--active {
     color: var(--color-navy);
     font-weight: 600;
+  }
+
+  .header__caret {
+    font-size: 0.6875rem;
+    transition: transform 0.2s ease;
+  }
+
+  .header__item--open .header__caret,
+  .header__item--has-children:hover .header__caret {
+    transform: rotate(180deg);
+  }
+
+  .header__submenu {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 240px;
+    margin-top: 0.25rem;
+    padding: 0.5rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-200);
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+  }
+
+  .header__item--has-children:hover .header__submenu,
+  .header__item--has-children:focus-within .header__submenu,
+  .header__item--open .header__submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .header__sublink {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-grey-600);
+    border-radius: 4px;
+    transition: color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .header__sublink:hover {
+    color: var(--color-navy);
+    background-color: var(--color-grey-100);
+  }
+
+  .header__sublink--active {
+    color: var(--color-navy);
+    font-weight: 600;
+    background-color: var(--color-grey-100);
   }
 
   .header__cta-item {
@@ -191,8 +346,40 @@ const navItems = [
     }
 
     .header__link {
+      width: 100%;
       padding: 0.75rem 0.5rem;
       font-size: 1rem;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    .header__submenu {
+      position: static;
+      min-width: 0;
+      margin-top: 0;
+      padding: 0 0 0 1.25rem;
+      background: none;
+      border: none;
+      box-shadow: none;
+      opacity: 0;
+      visibility: hidden;
+      max-height: 0;
+      overflow: hidden;
+      transform: none;
+      transition: opacity 0.15s ease, max-height 0.2s ease, visibility 0.15s ease;
+    }
+
+    .header__item--open .header__submenu {
+      opacity: 1;
+      visibility: visible;
+      max-height: 400px;
+      padding-top: 0.25rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .header__sublink {
+      padding: 0.625rem 0.5rem;
+      font-size: 0.9375rem;
     }
 
     .header__cta-item {

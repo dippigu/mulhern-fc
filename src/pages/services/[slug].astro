@@ -1,0 +1,521 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import Layout from '../../layouts/Layout.astro';
+
+export const getStaticPaths = (async () => {
+  const entries = await getCollection('services');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const {
+  breadcrumb,
+  title,
+  lead,
+  tags,
+  features,
+  packageGroups,
+  audiences,
+  process,
+  ctaHeading,
+  ctaBody,
+} = entry.data;
+
+const hasPrices = packageGroups.some((group) =>
+  group.items.some((item) => typeof item.priceGBP === 'number')
+);
+
+const formatNumber = (n: number): string => String(n + 1).padStart(2, '0');
+---
+
+<Layout title={title} description={lead}>
+  <section class="page-header">
+    <div class="container">
+      <span class="badge">{breadcrumb}</span>
+      <h1>{title}</h1>
+      <p class="page-header__subtitle">{lead}</p>
+      {tags.length > 0 && (
+        <ul class="tag-pills">
+          {tags.map((tag) => <li class="tag-pill">{tag}</li>)}
+        </ul>
+      )}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="prose">
+        <Content />
+      </div>
+
+      {features.length > 0 && (
+        <div class="numbered-grid">
+          {features.map((item, i) => (
+            <div class="numbered-card">
+              <span class="numbered-card__num">{formatNumber(i)}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  {packageGroups.length > 0 && (
+    <section class="section section--alt">
+      <div class="container">
+        {hasPrices && (
+          <div class="currency-bar">
+            <label for="currency-select" class="currency-bar__label">Display prices in</label>
+            <select id="currency-select" class="currency-bar__select">
+              <option value="GBP" selected>GBP (£)</option>
+              <option value="USD">USD ($)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="AUD">AUD (A$)</option>
+              <option value="CAD">CAD (C$)</option>
+              <option value="CNY">CNY (¥)</option>
+              <option value="HKD">HKD (HK$)</option>
+              <option value="NZD">NZD (NZ$)</option>
+            </select>
+            <span class="currency-bar__note">Converted prices are approximate</span>
+          </div>
+        )}
+
+        <div class="package-groups">
+          {packageGroups.map((group) => (
+            <div class="package-group">
+              <div class="package-group__header">
+                <h2>
+                  {group.title}
+                  {group.ukOnly && <span class="uk-only-label">UK Only</span>}
+                </h2>
+                {group.description && <p class="package-group__desc">{group.description}</p>}
+              </div>
+
+              {group.items.length > 0 && (
+                <div class="pricing-table">
+                  <div class="pricing-rows">
+                    {group.items.map((item) => (
+                      <div class:list={['pricing-row', { 'pricing-row--recommended': item.recommendedLabel }]}>
+                        <div class="pricing-row__info">
+                          <span class="pricing-row__name">{item.name}</span>
+                          {item.detail && <span class="pricing-row__detail">{item.detail}</span>}
+                          {item.recommendedLabel && <span class="pricing-row__label">{item.recommendedLabel}</span>}
+                        </div>
+                        {typeof item.priceGBP === 'number' && (
+                          <span class="pricing-row__price" data-gbp={item.priceGBP}>£{item.priceGBP}</span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {group.note && (
+                <aside class="caveat">
+                  <p>{group.note}</p>
+                </aside>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {audiences.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section__header">
+          <h2>Who this is for</h2>
+        </div>
+        <div class="card-grid card-grid--audiences">
+          {audiences.map((item) => (
+            <div class="info-card">
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {process.length > 0 && (
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__header">
+          <h2>Format &amp; delivery</h2>
+        </div>
+        <div class="card-grid card-grid--three">
+          {process.map((item) => (
+            <div class="info-card">
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section cta">
+    <div class="container">
+      <div class="section__header">
+        <h2>{ctaHeading}</h2>
+        <p>{ctaBody}</p>
+      </div>
+      <div class="cta__action">
+        <a href="/contact/" class="btn btn--primary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+{hasPrices && (
+  <script>
+    const rates: Record<string, { rate: number; symbol: string; decimals: number }> = {
+      GBP: { rate: 1, symbol: '£', decimals: 0 },
+      USD: { rate: 1.26, symbol: '$', decimals: 0 },
+      EUR: { rate: 1.17, symbol: '€', decimals: 0 },
+      AUD: { rate: 1.93, symbol: 'A$', decimals: 0 },
+      CAD: { rate: 1.72, symbol: 'C$', decimals: 0 },
+      CNY: { rate: 9.15, symbol: '¥', decimals: 0 },
+      HKD: { rate: 9.85, symbol: 'HK$', decimals: 0 },
+      NZD: { rate: 2.10, symbol: 'NZ$', decimals: 0 },
+    };
+
+    function updatePrices(currency: string): void {
+      const config = rates[currency];
+      if (!config) return;
+      const { rate, symbol, decimals } = config;
+      const prices = document.querySelectorAll<HTMLElement>('[data-gbp]');
+
+      for (const el of prices) {
+        const gbp = Number(el.dataset.gbp);
+        const converted = Math.round(gbp * rate);
+        el.textContent = `${symbol}${converted.toLocaleString('en', { minimumFractionDigits: decimals })}`;
+      }
+    }
+
+    const select = document.querySelector<HTMLSelectElement>('#currency-select');
+    select?.addEventListener('change', () => updatePrices(select.value));
+  </script>
+)}
+
+<style>
+  .page-header {
+    padding: 4rem 1.5rem 2.5rem;
+    background-color: var(--color-off-white);
+  }
+
+  .page-header .badge {
+    margin-bottom: 1rem;
+  }
+
+  .page-header h1 {
+    max-width: 22ch;
+  }
+
+  .page-header__subtitle {
+    margin-top: 1.25rem;
+    font-size: 1.0625rem;
+    color: var(--color-grey-600);
+    max-width: 65ch;
+  }
+
+  .tag-pills {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.75rem;
+  }
+
+  .tag-pill {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-200);
+    border-radius: 999px;
+  }
+
+  .prose {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .prose:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+
+  .prose :global(p) {
+    margin-bottom: 1.25rem;
+    color: var(--color-grey-600);
+    line-height: 1.8;
+  }
+
+  .prose :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .numbered-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .numbered-card {
+    padding: 2rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-200);
+    border-radius: 6px;
+  }
+
+  .numbered-card__num {
+    display: inline-block;
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+  }
+
+  .numbered-card h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .numbered-card p {
+    font-size: 0.9375rem;
+    color: var(--color-grey-600);
+    line-height: 1.7;
+  }
+
+  .currency-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .currency-bar__label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .currency-bar__select {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-navy);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-200);
+    border-radius: 4px;
+    cursor: pointer;
+    appearance: auto;
+  }
+
+  .currency-bar__select:focus {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 1px;
+  }
+
+  .currency-bar__note {
+    font-size: 0.8125rem;
+    color: var(--color-grey-400);
+    font-style: italic;
+  }
+
+  .package-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .package-group__header {
+    margin-bottom: 1rem;
+  }
+
+  .package-group__header h2 {
+    font-size: 1.375rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .package-group__desc {
+    color: var(--color-grey-600);
+    font-size: 0.9375rem;
+    max-width: 65ch;
+  }
+
+  .pricing-table {
+    padding: 1.5rem 2rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-200);
+    border-radius: 6px;
+  }
+
+  .pricing-rows {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pricing-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-grey-200);
+  }
+
+  .pricing-row:last-child {
+    border-bottom: none;
+  }
+
+  .pricing-row--recommended {
+    background-color: rgba(184, 134, 11, 0.04);
+    margin: 0 -1rem;
+    padding: 1rem;
+    border-radius: 4px;
+    border-bottom: 1px solid var(--color-grey-200);
+  }
+
+  .pricing-row__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .pricing-row__name {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--color-navy);
+  }
+
+  .pricing-row__detail {
+    font-size: 0.8125rem;
+    color: var(--color-grey-400);
+  }
+
+  .pricing-row__label {
+    display: inline-block;
+    width: fit-content;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background-color: var(--color-green);
+    color: var(--color-white);
+    border-radius: 3px;
+    margin-top: 0.25rem;
+  }
+
+  .pricing-row__price {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    white-space: nowrap;
+  }
+
+  .uk-only-label {
+    display: inline-block;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background-color: var(--color-gold);
+    color: var(--color-white);
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+  }
+
+  .caveat {
+    margin-top: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--color-off-white);
+    border-left: 3px solid var(--color-gold);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .caveat p {
+    font-size: 0.875rem;
+    color: var(--color-grey-600);
+    line-height: 1.6;
+  }
+
+  .card-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .card-grid--three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card-grid--audiences {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .info-card {
+    padding: 2rem;
+    border: 1px solid var(--color-grey-200);
+    border-radius: 6px;
+    background-color: var(--color-white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .info-card:hover {
+    border-color: var(--color-gold);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .info-card h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 0.625rem;
+  }
+
+  .info-card p {
+    font-size: 0.9375rem;
+    color: var(--color-grey-600);
+    line-height: 1.7;
+  }
+
+  .cta__action {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .numbered-grid,
+    .card-grid--three,
+    .card-grid--audiences {
+      grid-template-columns: 1fr;
+    }
+
+    .pricing-table {
+      padding: 1rem 1.25rem;
+    }
+
+    .pricing-row--recommended {
+      margin: 0 -0.5rem;
+      padding: 1rem 0.75rem;
+    }
+  }
+</style>

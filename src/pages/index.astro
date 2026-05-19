@@ -130,28 +130,41 @@ import site from '../data/site.json';
       <div class="services-split">
         <div class="service-block">
           <div class="service-block__accent"></div>
-          <h3>Players & Families</h3>
+          <h3>Player Analysis</h3>
           <ul>
-            <li>Development Readiness Assessment (ages 7-13)</li>
-            <li>Single & multi-match video analysis</li>
-            <li>Enhanced assessments with Zoom consultation</li>
-            <li>Full development plans with elite benchmarks</li>
+            <li>Video match analysis (single &amp; multi-match)</li>
+            <li>Three-section assessment report</li>
+            <li>Zoom consultation add-ons</li>
             <li>In-person observation (UK only)</li>
+            <li>Applicant evaluation for institutions</li>
           </ul>
-          <a href="/services/players/" class="btn btn--primary">View Services</a>
+          <a href="/services/player-analysis/" class="btn btn--primary">View Services</a>
         </div>
 
         <div class="service-block">
           <div class="service-block__accent service-block__accent--green"></div>
-          <h3>Clubs & Institutions</h3>
+          <h3>Player Pathways</h3>
           <ul>
-            <li>Applicant evaluation and reporting</li>
             <li>Long-list and short-list creation</li>
             <li>Recruitment cycle support</li>
-            <li>Workshops and coach mentorship</li>
+            <li>Academy, agency and school partnerships</li>
             <li>Institutional retainers</li>
+            <li>Bespoke packages</li>
           </ul>
-          <a href="/services/institutions/" class="btn btn--primary">View Services</a>
+          <a href="/services/player-pathways/" class="btn btn--primary">View Services</a>
+        </div>
+
+        <div class="service-block">
+          <div class="service-block__accent service-block__accent--navy"></div>
+          <h3>Workshops &amp; Presentations</h3>
+          <ul>
+            <li>Workshops for staff and players</li>
+            <li>Coach mentorship</li>
+            <li>Tailored topics &amp; programmes</li>
+            <li>Online via Zoom or in-person</li>
+            <li>Single sessions or multi-week series</li>
+          </ul>
+          <a href="/services/workshops-and-presentations/" class="btn btn--primary">View Services</a>
         </div>
       </div>
     </div>
@@ -367,7 +380,7 @@ import site from '../data/site.json';
   /* Services Split */
   .services-split {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
   }
 
@@ -395,6 +408,10 @@ import site from '../data/site.json';
 
   .service-block__accent--green {
     background-color: var(--color-green);
+  }
+
+  .service-block__accent--navy {
+    background-color: var(--color-navy);
   }
 
   .service-block h3 {

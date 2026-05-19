@@ -42,4 +42,36 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { testimonials, awards, pages };
+const packageItem = z.object({
+  name: z.string(),
+  detail: z.string().optional(),
+  priceGBP: z.number().optional(),
+  recommendedLabel: z.string().optional(),
+});
+
+const packageGroup = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+  note: z.string().optional(),
+  ukOnly: z.boolean().default(false),
+  items: z.array(packageItem).default([]),
+});
+
+const services = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/services' }),
+  schema: z.object({
+    breadcrumb: z.string(),
+    title: z.string(),
+    lead: z.string(),
+    order: z.number(),
+    tags: z.array(z.string()).default([]),
+    features: z.array(titleBody).default([]),
+    packageGroups: z.array(packageGroup).default([]),
+    audiences: z.array(titleBody).default([]),
+    process: z.array(titleBody).default([]),
+    ctaHeading: z.string(),
+    ctaBody: z.string(),
+  }),
+});
+
+export const collections = { testimonials, awards, pages, services };

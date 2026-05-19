@@ -1,3 +1,63 @@
 [build]
   command = "pnpm build"
   publish = "dist"
+
+[[redirects]]
+  from = "/services/players/*"
+  to = "/services/player-analysis/"
+  status = 301
+
+[[redirects]]
+  from = "/services/players"
+  to = "/services/player-analysis/"
+  status = 301
+
+[[redirects]]
+  from = "/services/institutions/*"
+  to = "/services/player-analysis/"
+  status = 301
+
+[[redirects]]
+  from = "/services/institutions"
+  to = "/services/player-analysis/"
+  status = 301
+
+[[redirects]]
+  from = "/partnerships/academies/*"
+  to = "/services/player-pathways/"
+  status = 301
+
+[[redirects]]
+  from = "/partnerships/academies"
+  to = "/services/player-pathways/"
+  status = 301
+
+[[redirects]]
+  from = "/partnerships/agencies/*"
+  to = "/services/player-pathways/"
+  status = 301
+
+[[redirects]]
+  from = "/partnerships/agencies"
+  to = "/services/player-pathways/"
+  status = 301
+
+[[redirects]]
+  from = "/partnerships/schools/*"
+  to = "/services/player-pathways/"
+  status = 301
+
+[[redirects]]
+  from = "/partnerships/schools"
+  to = "/services/player-pathways/"
+  status = 301
+
+[[redirects]]
+  from = "/partnerships/*"
+  to = "/services/player-pathways/"
+  status = 301
+
+[[redirects]]
+  from = "/partnerships"
+  to = "/services/player-pathways/"
+  status = 301
