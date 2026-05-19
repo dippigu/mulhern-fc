@@ -8,13 +8,13 @@ features:
   - title: Technical & Tactical Assessment
     body: A detailed written assessment of the player's technical ability, tactical understanding, physical attributes and behaviours. Written for parents, this section gives honest, clear development priorities using elite-standard benchmarks. No jargon. No false positivity.
   - title: A Personal Message to the Player
-    body: A written section addressed personally to the player. A powerful psychological tool — particularly for younger players — that communicates development areas with honesty and encouragement directly from a UEFA A Licence coach. Many players have never received feedback at this level.
+    body: A written section addressed personally to the player. A powerful psychological tool (particularly for younger players) that communicates development areas with honesty and encouragement directly from a UEFA A Licence coach. Many players have never received feedback at this level.
   - title: A Practical Guide for the Family
-    body: Equips families with the knowledge to actively support the player's development. Covers the sessions needed, the behaviours to encourage, and how to help without hindering. Most families want to help but don't know how — this gives them a practical framework.
+    body: Equips families with the knowledge to actively support the player's development. Covers the sessions needed, the behaviours to encourage, and how to help without hindering. Most families want to help but don't know how. This gives them a practical framework.
   - title: Applicant Evaluation for Institutions
     body: A professional, objective review of football applicants through full match video analysis, written reporting, development priorities and suitability insight for your programme. Available as a standalone service or as part of a wider partnership.
 packageGroups:
-  - title: Video Analysis — Assessment Report
+  - title: 'Video Analysis: Assessment Report'
     description: Submit match footage for a full assessment. Every package includes the complete three-section report.
     note: 'A single game may not fully represent a player''s habits, consistency or decision-making patterns. We recommend a minimum of two matches for the most accurate assessment. The single-match option is available for those seeking an initial overview, but should not be considered a complete picture.'
     items:
@@ -31,7 +31,7 @@ packageGroups:
       - name: Full Assessment
         detail: 4 games
         priceGBP: 399
-  - title: Video Analysis — Report + Zoom Consultation
+  - title: 'Video Analysis: Report + Zoom Consultation'
     description: Everything in the assessment report, plus a one-to-one Zoom call to talk through the findings. Parents are welcome to join.
     items:
       - name: Standard + Zoom
@@ -61,7 +61,7 @@ packageGroups:
         priceGBP: 75
 audiences:
   - title: Younger players (7-13)
-    body: For parents who want clarity on early development, ability and academy readiness — anywhere in the world.
+    body: For parents who want clarity on early development, ability and academy readiness, anywhere in the world.
   - title: Players aged 14-18
     body: Honest assessment and development guidance through the formative years, grounded in elite-standard benchmarks.
   - title: Players aged 18+
@@ -76,4 +76,4 @@ ctaHeading: Get in touch to discuss your needs
 ctaBody: Every player is different. Contact Michael to find the right assessment for you.
 ---
 
-Every assessment produces a comprehensive, approximately 40-page report built around three interconnected sections. These sections are designed to work together as a complete unit — giving the parent clarity, the player direction, and the family a practical framework for development.
+Every assessment produces a comprehensive, approximately 40-page report built around three interconnected sections. These sections are designed to work together as a complete unit, giving the parent clarity, the player direction, and the family a practical framework for development.
