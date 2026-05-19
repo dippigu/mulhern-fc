@@ -61,19 +61,17 @@ packageGroups:
         priceGBP: 75
 audiences:
   - title: Younger players (7-13)
-    body: For parents who want clarity on early development and academy readiness.
+    body: For parents who want clarity on early development, ability and academy readiness — anywhere in the world.
   - title: Players aged 14-18
-    body: Honest assessment and development guidance through the formative years.
+    body: Honest assessment and development guidance through the formative years, grounded in elite-standard benchmarks.
   - title: Players aged 18+
-    body: Preparing for trials, applications or pathway progression.
+    body: Independent evaluation for players preparing for trials, university applications or pathway progression.
   - title: Parents & families
-    body: Seeking clarity and unbiased, development-focused feedback.
-  - title: Academy & grassroots players
-    body: At any level, anywhere in the world.
-  - title: Players in transition
-    body: Preparing for trials, university applications or pathway changes.
-  - title: International pathways
-    body: Considering moves to or from the UK, USA, Australia and beyond.
+    body: Unbiased, development-focused feedback that cuts through club politics and false positivity.
+  - title: Clubs & academies
+    body: Applicant evaluation, candidate assessment and independent reads on current squad members.
+  - title: Universities, schools & agencies
+    body: Independent player evaluation for football programmes, student-athlete intake and represented players.
 ctaHeading: Get in touch to discuss your needs
 ctaBody: Every player is different. Contact Michael to find the right assessment for you.
 ---
