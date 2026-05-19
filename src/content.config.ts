@@ -25,23 +25,6 @@ const titleBody = z.object({
   body: z.string(),
 });
 
-const pages = defineCollection({
-  loader: glob({ pattern: '*.md', base: './src/content/pages' }),
-  schema: z.object({
-    breadcrumb: z.string(),
-    title: z.string(),
-    lead: z.string(),
-    tags: z.array(z.string()).default([]),
-    partnership: z.string().optional(),
-    features: z.array(titleBody).default([]),
-    topics: z.array(titleBody).default([]),
-    formats: z.array(titleBody).default([]),
-    audiences: z.array(titleBody).default([]),
-    ctaHeading: z.string(),
-    ctaBody: z.string(),
-  }),
-});
-
 const packageItem = z.object({
   name: z.string(),
   detail: z.string().optional(),
@@ -65,8 +48,10 @@ const services = defineCollection({
     lead: z.string(),
     order: z.number(),
     tags: z.array(z.string()).default([]),
+    partnership: z.string().optional(),
     features: z.array(titleBody).default([]),
     packageGroups: z.array(packageGroup).default([]),
+    topics: z.array(titleBody).default([]),
     audiences: z.array(titleBody).default([]),
     process: z.array(titleBody).default([]),
     ctaHeading: z.string(),
@@ -74,4 +59,4 @@ const services = defineCollection({
   }),
 });
 
-export const collections = { testimonials, awards, pages, services };
+export const collections = { testimonials, awards, services };

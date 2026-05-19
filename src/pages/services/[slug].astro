@@ -18,8 +18,10 @@ const {
   title,
   lead,
   tags,
+  partnership,
   features,
   packageGroups,
+  topics,
   audiences,
   process,
   ctaHeading,
@@ -46,6 +48,16 @@ const formatNumber = (n: number): string => String(n + 1).padStart(2, '0');
       )}
     </div>
   </section>
+
+  {partnership && (
+    <section class="section section--alt">
+      <div class="container">
+        <aside class="partnership-callout">
+          <p>{partnership}</p>
+        </aside>
+      </div>
+    </section>
+  )}
 
   <section class="section">
     <div class="container">
@@ -122,6 +134,26 @@ const formatNumber = (n: number): string => String(n + 1).padStart(2, '0');
                   <p>{group.note}</p>
                 </aside>
               )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {topics.length > 0 && (
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__header">
+          <h2>Workshop topics</h2>
+          <p>Sessions are built around the topics below — each delivered as a structured discussion, not a lecture.</p>
+        </div>
+        <div class="numbered-grid numbered-grid--three">
+          {topics.map((item, i) => (
+            <div class="numbered-card">
+              <span class="numbered-card__num">{formatNumber(i)}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
             </div>
           ))}
         </div>
@@ -249,6 +281,22 @@ const formatNumber = (n: number): string => String(n + 1).padStart(2, '0');
     border-radius: 999px;
   }
 
+  .partnership-callout {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    background-color: var(--color-white);
+    border-left: 3px solid var(--color-gold);
+    border-radius: 0 6px 6px 0;
+  }
+
+  .partnership-callout p {
+    margin: 0;
+    color: var(--color-grey-600);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+
   .prose {
     max-width: 700px;
     margin: 0 auto;
@@ -274,6 +322,11 @@ const formatNumber = (n: number): string => String(n + 1).padStart(2, '0');
     grid-template-columns: repeat(2, 1fr);
     max-width: 900px;
     margin: 0 auto;
+  }
+
+  .numbered-grid--three {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: none;
   }
 
   .numbered-card {
@@ -504,6 +557,7 @@ const formatNumber = (n: number): string => String(n + 1).padStart(2, '0');
 
   @media (max-width: 768px) {
     .numbered-grid,
+    .numbered-grid--three,
     .card-grid--three,
     .card-grid--audiences {
       grid-template-columns: 1fr;

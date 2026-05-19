@@ -61,3 +61,23 @@
   from = "/partnerships"
   to = "/services/player-pathways/"
   status = 301
+
+[[redirects]]
+  from = "/education/the-football-room/*"
+  to = "/services/workshops-and-presentations/"
+  status = 301
+
+[[redirects]]
+  from = "/education/the-football-room"
+  to = "/services/workshops-and-presentations/"
+  status = 301
+
+[[redirects]]
+  from = "/education/*"
+  to = "/services/workshops-and-presentations/"
+  status = 301
+
+[[redirects]]
+  from = "/education"
+  to = "/services/workshops-and-presentations/"
+  status = 301

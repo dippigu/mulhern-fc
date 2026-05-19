@@ -105,6 +105,10 @@ content:
         label: Tag pills (optional)
         type: string
         list: true
+      - name: partnership
+        label: Partnership callout (optional)
+        type: text
+        description: 'Highlighted box near the top of the page (used to flag WEA partnership, etc.). Leave blank to hide.'
       - name: body
         label: Intro body (optional)
         type: rich-text
@@ -136,6 +140,14 @@ content:
               - { name: detail, label: Detail (e.g. "2 games"), type: string }
               - { name: priceGBP, label: Price in GBP (leave blank for unpriced), type: number }
               - { name: recommendedLabel, label: 'Badge label (e.g. "Recommended", "Best Value")', type: string }
+      - name: topics
+        label: Topic cards (optional)
+        type: object
+        list: true
+        description: 'A list of workshop or session topics — card grid'
+        fields:
+          - { name: title, label: Title, type: string, required: true }
+          - { name: body, label: Body, type: text, required: true }
       - name: audiences
         label: Audience cards (optional)
         type: object
@@ -149,78 +161,6 @@ content:
         type: object
         list: true
         description: 'How it works — formats, delivery, process'
-        fields:
-          - { name: title, label: Title, type: string, required: true }
-          - { name: body, label: Body, type: text, required: true }
-      - name: ctaHeading
-        label: Call-to-action heading
-        type: string
-        required: true
-      - name: ctaBody
-        label: Call-to-action body
-        type: text
-        required: true
-
-  - name: pages
-    label: Pages
-    type: collection
-    path: src/content/pages
-    format: yaml-frontmatter
-    view:
-      fields: [title, breadcrumb]
-    filename:
-      template: '{title}.md'
-      field: false
-    fields:
-      - name: breadcrumb
-        label: Section label (small text above title)
-        type: string
-        required: true
-      - name: title
-        label: Page title
-        type: string
-        required: true
-      - name: lead
-        label: Lead paragraph
-        type: text
-        required: true
-      - name: tags
-        label: Tag pills
-        type: string
-        list: true
-      - name: partnership
-        label: Partnership callout (optional)
-        type: text
-        description: 'Highlighted box near the top of the page. Leave blank to hide.'
-      - name: body
-        label: About-the-workshops body
-        type: rich-text
-        required: true
-      - name: features
-        label: About-the-workshops feature points
-        type: object
-        list: true
-        fields:
-          - { name: title, label: Title, type: string, required: true }
-          - { name: body, label: Body, type: text, required: true }
-      - name: topics
-        label: Workshop topics
-        type: object
-        list: true
-        fields:
-          - { name: title, label: Title, type: string, required: true }
-          - { name: body, label: Body, type: text, required: true }
-      - name: formats
-        label: Format & delivery options
-        type: object
-        list: true
-        fields:
-          - { name: title, label: Title, type: string, required: true }
-          - { name: body, label: Body, type: text, required: true }
-      - name: audiences
-        label: Target audiences
-        type: object
-        list: true
         fields:
           - { name: title, label: Title, type: string, required: true }
           - { name: body, label: Body, type: text, required: true }
